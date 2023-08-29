@@ -1,7 +1,8 @@
-import { View, Text, ImageBackground, StyleSheet } from 'react-native'
+import { View, Text, ImageBackground, StyleSheet, Pressable, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
+import googleIcon from '../../assets/images/google.png'
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -21,17 +22,33 @@ const UserMethod = () => {
                         style={styles.grad}
                     />
                     
-                    {/* page contents starts here  */}
+                    {/* screen contents starts here  */}
                     <View style={styles.content}>
                         <View style={styles.textContent}>
                             <Text style={styles.title}>
                                 Discover an unmatched Gospel atmosphere awaiting you in one app.
                             </Text> 
                         </View>
-                        
                     </View>
-
                 </ImageBackground>
+            </View>
+
+            
+            <View style={styles.buttons}>
+                {/* continue with google button  */}
+                <TouchableOpacity activeOpacity={0.7} style={styles.btn1}>
+                    <Image source={googleIcon} />
+                    <Text style={styles.btnText}>Continue with Google</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity activeOpacity={0.7} style={styles.btn2}>
+                    <Text style={styles.btnText2}>Sign up</Text>
+                </TouchableOpacity>
+            </View>
+
+            {/* login link */}
+            <View>
+                <Text style={styles.loginLink}>Have an account? Log in</Text>
             </View>
         </View>
     )
@@ -62,15 +79,54 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 18,
-        fontFamily: 'sf-reg',
+        fontFamily: 'sf-med',
     },
     content: {
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
     },
     textContent: {
         width: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 24
     },
+    buttons: {
+        paddingHorizontal: 16
+    },
+    btn1: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        width: '100%',
+        height: 56,
+        paddingHorizontal: 21,
+        borderRadius: 8,
+        marginBottom: 16
+    },
+    btn2: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#344054',
+        width: '100%',
+        height: 56,
+        borderRadius: 8,
+        marginBottom: 30
+    },
+    btnText: {
+        paddingLeft: 48,
+        fontSize: 18,
+        fontFamily: 'sf-med'
+    },
+    btnText2: {
+        fontSize: 18,
+        fontFamily: 'sf-med',
+        color: 'white'
+    },
+    loginLink: {
+        fontSize: 16,
+        fontFamily: 'sf-reg',
+        color: 'white',
+        textAlign: 'center'
+    }
 });
 
 export default UserMethod
