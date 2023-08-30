@@ -1,8 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { useFonts } from 'expo-font';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserMethod from './screens/onboarding/UserMethod';
+import Onboarding from './screens/onboarding/Onboarding';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,10 +20,17 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <UserMethod />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='onboarding' component={Onboarding} options={{
+          headerShown: false,
+        }}  />
+        <Stack.Screen name='auth-select' component={UserMethod} options={{
+          headerShown: false,
+        }}  />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 

@@ -9,7 +9,6 @@ const windowHeight = Dimensions.get('window').height;
 const UserMethod = () => {
     return (
         <View style={styles.container}>
-
             {/* header   */}
             <View style={styles.headerSection}>
                 <ImageBackground
