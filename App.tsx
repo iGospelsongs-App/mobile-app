@@ -5,8 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserMethod from './screens/onboarding/UserMethod';
 import Onboarding from './screens/onboarding/Onboarding';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
+
+export type RootStackParamList = {
+  onboarding: { id: number } | undefined;
+  userMethod: {id: number} | undefined;
+};
 
 export default function App() {
   const [fontsLoaded] = useFonts({

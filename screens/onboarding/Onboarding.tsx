@@ -33,7 +33,7 @@ const onBoardingData: OnboardingDataType[] = [
 ]
 
 
-const Onboarding = () => {
+const Onboarding = ({navigation}) => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
     const updateCurrentSlideIndex = (e: any) => {
@@ -41,6 +41,7 @@ const Onboarding = () => {
       const currentIndex = Math.round(contentOffsetX / width);
       setCurrentSlideIndex(currentIndex)
     }
+
 
   return (
     <View style={styles.container}>
