@@ -55,8 +55,6 @@ const OnboardingSlide = ({item, data, slideIndex}: any) => {
                           </View>
                       )
                   }
-
-               
               </View>
           </ImageBackground>
           

@@ -3,19 +3,10 @@ import React, { useState } from 'react'
 import img1 from '../../assets/images/ob1.png'
 import img2 from '../../assets/images/ob2.png'
 import img3 from '../../assets/images/ob3.png'
-import PagerView from 'react-native-pager-view';
-import { LinearGradient } from 'expo-linear-gradient';
 import OnboardingSlide from '../../components/onboarding/OnboardingSlide'
+import { OnboardingDataType } from 'types'
 
 const {width, height} = Dimensions.get('window');
-
-interface OnboardingDataType {
-    id: number,
-    image: string,
-    title: string,
-    btn: boolean,
-    indicator: boolean
-}
 
 const onBoardingData: OnboardingDataType[] = [
     {
@@ -53,12 +44,6 @@ const Onboarding = () => {
 
   return (
     <View style={styles.container}>
-          
-          {/* <Text style={{
-            position: 'absolute',
-            top: '20%',
-            zIndex: 10
-          }}>This is me</Text> */}
           <FlatList
               onMomentumScrollEnd={updateCurrentSlideIndex}
               data={onBoardingData}
