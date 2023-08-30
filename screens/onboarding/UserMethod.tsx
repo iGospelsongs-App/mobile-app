@@ -6,7 +6,7 @@ import googleIcon from '../../assets/images/google.png'
 
 const windowHeight = Dimensions.get('window').height;
 
-const UserMethod = () => {
+const UserMethod = ({navigation}) => {
     return (
         <View style={styles.container}>
             {/* header   */}
@@ -35,19 +35,21 @@ const UserMethod = () => {
             
             <View style={styles.buttons}>
                 {/* continue with google button  */}
-                <TouchableOpacity activeOpacity={0.7} style={styles.btn1}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.btn1}>
                     <Image source={googleIcon} />
                     <Text style={styles.btnText}>Continue with Google</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity activeOpacity={0.7} style={styles.btn2}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.btn2}>
                     <Text style={styles.btnText2}>Sign up</Text>
                 </TouchableOpacity>
             </View>
 
             {/* login link */}
             <View>
-                <Text style={styles.loginLink}>Have an account? Log in</Text>
+                <Text style={styles.loginLink}>Have an account? 
+                    <Text onPress={() => navigation.navigate('login')}>Log in</Text>
+                </Text>
             </View>
         </View>
     )

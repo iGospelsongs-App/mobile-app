@@ -4,7 +4,7 @@ import img1 from '../../assets/images/ob1.png'
 import img2 from '../../assets/images/ob2.png'
 import img3 from '../../assets/images/ob3.png'
 import OnboardingSlide from '../../components/onboarding/OnboardingSlide'
-import { OnboardingDataType } from 'types'
+import { OnboardingDataType } from '../../types'
 
 const {width, height} = Dimensions.get('window');
 

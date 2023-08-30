@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserMethod from './screens/onboarding/UserMethod';
 import Onboarding from './screens/onboarding/Onboarding';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Login from './screens/auth/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,9 @@ export default function App() {
           headerShown: false,
         }}  />
         <Stack.Screen name='auth-select' component={UserMethod} options={{
+          headerShown: false,
+        }}  />
+         <Stack.Screen name='login' component={Login} options={{
           headerShown: false,
         }}  />
       </Stack.Navigator>

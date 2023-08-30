@@ -3,7 +3,6 @@ import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import { RootStackParamList } from 'App';
 
 const {width, height} = Dimensions.get('window');
 
@@ -33,7 +32,8 @@ const OnboardingSlide = ({item, data, slideIndex}: any) => {
                                   <Text style={styles.btnText}>Get Started</Text>
                               </TouchableOpacity>
                               <Text style={styles.loginLink}>
-                                Have an account? Log in
+                                Have an account? 
+                                <Text onPress={() => navigation.navigate('login')}>Log in</Text>
                               </Text>
                           </>
 
