@@ -31,6 +31,7 @@ const Login = ({ navigation }) => {
                             placeholder='olivia@gmail.com'
                             style={styles.input}
                             selectionColor={'white'}
+                            autoCapitalize='none'
                         />
                     </View>
 
@@ -42,10 +43,13 @@ const Login = ({ navigation }) => {
                                 style={styles.input2}
                                 selectionColor={"white"}
                                 secureTextEntry={!showPassword}
+                                autoCapitalize='none'
+                                autoComplete='off'
                             />
                             <TouchableOpacity
                                 style={styles.eye}
                                 onPress={togglePasswordVisibility}
+                                activeOpacity={0.6}
                             >
                                 <Feather
                                     name={showPassword ? "eye" : "eye-off"}
