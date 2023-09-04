@@ -7,6 +7,7 @@ import UserMethod from './screens/onboarding/UserMethod';
 import Onboarding from './screens/onboarding/Onboarding';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Login from './screens/auth/Login';
+import Signup from './screens/auth/Signup';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,9 @@ export default function App() {
          <Stack.Screen name='login' component={Login} options={{
           headerShown: false,
         }}  />
+        <Stack.Screen name='sign-up' component={Signup} options={{
+          headerShown: false,
+        }} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

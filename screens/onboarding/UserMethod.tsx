@@ -40,7 +40,7 @@ const UserMethod = ({navigation}) => {
                     <Text style={styles.btnText}>Continue with Google</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity activeOpacity={0.8} style={styles.btn2}>
+                <TouchableOpacity onPress={() => navigation.navigate('sign-up')} activeOpacity={0.8} style={styles.btn2}>
                     <Text style={styles.btnText2}>Sign up</Text>
                 </TouchableOpacity>
             </View>
