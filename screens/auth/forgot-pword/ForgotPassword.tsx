@@ -4,12 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-const Login = ({ navigation }) => {
-    const [showPassword, setShowPassword] = useState(false);
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
+const ForgotPassword = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -24,7 +19,7 @@ const Login = ({ navigation }) => {
                 {/* form section  */}
                 <View style={styles.form}>
                     <View style={styles.singleForm}>
-                        <Text style={styles.label}>Username or Email</Text>
+                        <Text style={styles.label}>Enter your Email</Text>
                         <TextInput
                             enterKeyHint='next'
                             autoComplete='email'
@@ -35,51 +30,17 @@ const Login = ({ navigation }) => {
                         />
                     </View>
 
-                    {/* password  */}
-                    <View>
-                        <Text style={styles.label}>Password</Text>
-                        <View style={styles.singleForm2}>
-                            <TextInput
-                                style={styles.input2}
-                                selectionColor={"white"}
-                                secureTextEntry={!showPassword}
-                                autoCapitalize='none'
-                                autoComplete='off'
-                            />
-                            <TouchableOpacity
-                                style={styles.eye}
-                                onPress={togglePasswordVisibility}
-                                activeOpacity={0.6}
-                            >
-                                <Feather
-                                    name={showPassword ? "eye" : "eye-off"}
-                                    size={22}
-                                    color="white"
-                                />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-
-                    {/* forgot password  */}
-                    <Text style={styles.forgot} onPress={() => navigation.navigate('forgot-pword')}>Forgot Password?</Text>
-
                     {/* submit button  */}
                     <TouchableOpacity activeOpacity={0.8} style={styles.submitBtn}>
                         <Text style={styles.submitText}>Continue</Text>
                     </TouchableOpacity>
-
-                    <View>
-                        <Text style={styles.loginLink}>Don't an account?
-                            <Text onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
-                        </Text>
-                    </View>
                 </View>
             </View>
         </SafeAreaView>
     )
 }
 
-export default Login
+export default ForgotPassword
 
 const styles = StyleSheet.create({
     container: {
@@ -124,35 +85,6 @@ const styles = StyleSheet.create({
     singleForm: {
         marginBottom: 26
     },
-    singleForm2: {
-        marginBottom: 26,
-        borderRadius: 8,
-        borderColor: '#D0D5DD',
-        borderWidth: 1,
-        height: 50,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    eye: {
-        paddingRight: 20,
-    },
-    input2: {
-        color: 'white',
-        paddingLeft: 15,
-        width: '85%',
-        height: 55,
-        fontFamily: 'sf-med',
-        fontSize: 16
-    },
-    forgot: {
-        color: 'white',
-        fontFamily: 'sf-med',
-        fontSize: 16,
-        marginBottom: 26,
-        textAlign: 'right',
-    },
     submitBtn: {
         width: '100%',
         backgroundColor: '#344054',
@@ -166,11 +98,4 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
 
     },
-    loginLink: {
-        fontSize: 16,
-        fontFamily: 'sf-reg',
-        color: 'white',
-        textAlign: 'right',
-        marginTop: 20
-    }
 })

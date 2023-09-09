@@ -8,6 +8,7 @@ import Onboarding from './screens/onboarding/Onboarding';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Login from './screens/auth/Login';
 import Signup from './screens/auth/Signup';
+import ForgotPassword from './screens/auth/forgot-pword/ForgotPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,9 @@ export default function App() {
           headerShown: false,
         }}  />
         <Stack.Screen name='sign-up' component={Signup} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name='forgot-pword' component={ForgotPassword} options={{
           headerShown: false,
         }} />
       </Stack.Navigator>
