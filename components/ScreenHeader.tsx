@@ -4,13 +4,13 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 
-const ScreenHeader = () => {
+const ScreenHeader = ({title}) => {
     const navigation = useNavigation();
 
     return (
         <View style={styles.header}>
             <MaterialIcons onPress={() => navigation.goBack()} name="arrow-back-ios" size={24} color="white" />
-            <Text style={styles.title}>Create Account</Text>
+            <Text style={styles.title}>{title}</Text>
             <View></View>
         </View>
     )

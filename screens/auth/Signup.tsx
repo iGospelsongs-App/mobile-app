@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
+import ScreenHeader from '../../components/ScreenHeader';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,11 +18,7 @@ const Signup = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
         {/* screen header section  */}
-        <View style={styles.header}>
-          <MaterialIcons onPress={() => navigation.goBack()} name="arrow-back-ios" size={24} color="white" />
-          <Text style={styles.title}>Create Account</Text>
-          <View></View>
-        </View>
+        <ScreenHeader title="Create Account" />
         <ScrollView style={styles.cover}>
           {/* form section  */}
           <View style={styles.form}>
@@ -104,7 +100,7 @@ const Signup = ({ navigation }) => {
             </View>
 
             {/* submit button  */}
-            <TouchableOpacity activeOpacity={0.8} style={styles.submitBtn}>
+            <TouchableOpacity  onPress={() => navigation.navigate('verify-email')} activeOpacity={0.8} style={styles.submitBtn}>
               <Text style={styles.submitText}>Continue</Text>
             </TouchableOpacity>
 
@@ -136,17 +132,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 14,
     marginTop: Platform.OS === 'android' && 20
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
-  },
-  title: {
-    color: 'white',
-    fontFamily: 'sf-med',
-    fontSize: 18
   },
   form: {
     marginTop: 40,

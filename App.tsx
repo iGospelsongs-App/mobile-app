@@ -9,6 +9,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Login from './screens/auth/Login';
 import Signup from './screens/auth/Signup';
 import ForgotPassword from './screens/auth/forgot-pword/ForgotPassword';
+import VerifyInput from './screens/auth/verify-email/VerifyInput';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,9 @@ export default function App() {
           headerShown: false,
         }}  />
         <Stack.Screen name='sign-up' component={Signup} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name='verify-email' component={VerifyInput} options={{
           headerShown: false,
         }} />
         <Stack.Screen name='forgot-pword' component={ForgotPassword} options={{

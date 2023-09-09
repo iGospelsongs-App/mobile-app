@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import ScreenHeader from '../../components/ScreenHeader';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -15,12 +15,7 @@ const Login = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.wrapper}>
                 {/* screen header section  */}
-                <View style={styles.header}>
-                    <MaterialIcons onPress={() => navigation.goBack()} name="arrow-back-ios" size={24} color="white" />
-                    <Text style={styles.title}>Login</Text>
-                    <View></View>
-                </View>
-
+                <ScreenHeader title="Login" />
                 {/* form section  */}
                 <View style={styles.form}>
                     <View style={styles.singleForm}>
@@ -90,16 +85,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 14,
         marginTop: Platform.OS === 'android' && 20
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    title: {
-        color: 'white',
-        fontFamily: 'sf-med',
-        fontSize: 18
     },
     form: {
         marginTop: 40,
