@@ -1,13 +1,12 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
+import Button1 from '../../components/Button1';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setChecked] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,7 +27,6 @@ const Signup = ({ navigation }) => {
               <TextInput
                 enterKeyHint='next'
                 autoComplete='email'
-                placeholder='olivia@gmail.com'
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
@@ -41,7 +39,6 @@ const Signup = ({ navigation }) => {
               <TextInput
                 enterKeyHint='next'
                 autoComplete='email'
-                placeholder='olivia@gmail.com'
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
@@ -55,6 +52,7 @@ const Signup = ({ navigation }) => {
                 enterKeyHint='next'
                 autoComplete='email'
                 placeholder='olivia@gmail.com'
+                placeholderTextColor={'#667085'}
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
@@ -62,7 +60,7 @@ const Signup = ({ navigation }) => {
             </View>
 
             {/* password  */}
-            <View>
+            <View style={{marginBottom: 10}}>
               <Text style={styles.label}>Password</Text>
               <View style={styles.singleForm2}>
                 <TextInput
@@ -86,28 +84,13 @@ const Signup = ({ navigation }) => {
               </View>
             </View>
 
-            {/* terms check */}
-            <View style={styles.checkField}>
-              <Checkbox
-                style={styles.checkbox}
-                value={isChecked}
-                onValueChange={setChecked}
-                color={isChecked ? '#4630EB' : undefined}
-              />
-              <Text style={styles.agree}>
-                I agree to iGospel songs agreement
-              </Text>
-            </View>
-
             {/* submit button  */}
-            <TouchableOpacity  onPress={() => navigation.navigate('verify-email')} activeOpacity={0.8} style={styles.submitBtn}>
-              <Text style={styles.submitText}>Continue</Text>
-            </TouchableOpacity>
+            <Button1 onPress={() => navigation.navigate('checks')} title="Continue" ready={true} />
 
             {/* login link */}
             <View>
               <Text style={styles.loginLink}>Already Have an account?
-                <Text onPress={() => navigation.navigate('login')}> Log in</Text>
+                <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('login')}> Log in</Text>
               </Text>
             </View>
           </View>
@@ -198,24 +181,11 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
 
   },
-  checkField: {
-    marginBottom: 26,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  checkbox: {
-    margin: 8,
-  },
-  agree: {
-    color: 'white',
-    fontFamily: 'sf-reg',
-    fontSize: 16,
-  },
   loginLink: {
     fontSize: 16,
     fontFamily: 'sf-reg',
     color: 'white',
-    textAlign: 'right',
-    marginTop: 20
+    textAlign: 'center',
+    marginTop: 30
 }
 })

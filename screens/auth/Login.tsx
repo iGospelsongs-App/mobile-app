@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
+import Button1 from '../../components/Button1';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -59,13 +60,11 @@ const Login = ({ navigation }) => {
                     <Text style={styles.forgot} onPress={() => navigation.navigate('forgot-pword')}>Forgot Password?</Text>
 
                     {/* submit button  */}
-                    <TouchableOpacity activeOpacity={0.8} style={styles.submitBtn}>
-                        <Text style={styles.submitText}>Continue</Text>
-                    </TouchableOpacity>
+                    <Button1 onPress={() => {}} title='Continue' ready={false} />
 
                     <View>
                         <Text style={styles.loginLink}>Don't an account?
-                            <Text onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
+                            <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
                         </Text>
                     </View>
                 </View>
@@ -138,24 +137,11 @@ const styles = StyleSheet.create({
         marginBottom: 26,
         textAlign: 'right',
     },
-    submitBtn: {
-        width: '100%',
-        backgroundColor: '#344054',
-        borderRadius: 8
-    },
-    submitText: {
-        textAlign: 'center',
-        color: 'white',
-        fontFamily: 'sf-med',
-        fontSize: 18,
-        paddingVertical: 16,
-
-    },
     loginLink: {
         fontSize: 16,
         fontFamily: 'sf-reg',
         color: 'white',
-        textAlign: 'right',
-        marginTop: 20
+        textAlign: 'center',
+        marginTop: 30
     }
 })

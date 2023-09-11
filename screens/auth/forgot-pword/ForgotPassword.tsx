@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import Button1 from '../../../components/Button1';
 
 const ForgotPassword = ({ navigation }) => {
 
@@ -31,9 +32,7 @@ const ForgotPassword = ({ navigation }) => {
                     </View>
 
                     {/* submit button  */}
-                    <TouchableOpacity activeOpacity={0.8} style={styles.submitBtn}>
-                        <Text style={styles.submitText}>Continue</Text>
-                    </TouchableOpacity>
+                    <Button1 onPress={() => {}} title='Continue' ready={false} />
                 </View>
             </View>
         </SafeAreaView>
@@ -84,18 +83,5 @@ const styles = StyleSheet.create({
     },
     singleForm: {
         marginBottom: 26
-    },
-    submitBtn: {
-        width: '100%',
-        backgroundColor: '#344054',
-        borderRadius: 8
-    },
-    submitText: {
-        textAlign: 'center',
-        color: 'white',
-        fontFamily: 'sf-med',
-        fontSize: 18,
-        paddingVertical: 16,
-
     },
 })

@@ -18,21 +18,21 @@ const VerifyInput = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.wrapper}>
-          <ScreenHeader title='Verify' />  
+      <View style={styles.wrapper}>
+        <ScreenHeader title='Verify' />
         <View style={styles.content}>
           <Text style={styles.info}>A 4-digit code has been sent to your Email</Text>
-        <OtpInput
-          setPinReady={setPinReady}
-          code={code}
-          setCode={setCode}
-          maxLength={MAX_CODE_LENGTH}
-        />
-        <Text style={styles.info2}>Enter 4-digit code</Text>
-        <Button1 title='Proceed' onPress={handleSubmit} ready={pinReady} />
-        <Text style={styles.info2}>Didn't recieve code ? <Text style={{textDecorationLine: 'underline'}}>Resend</Text></Text>
+          <OtpInput
+            setPinReady={setPinReady}
+            code={code}
+            setCode={setCode}
+            maxLength={MAX_CODE_LENGTH}
+          />
+          <Text style={styles.info2}>Enter 4-digit code</Text>
+          <Button1 title='Proceed' onPress={handleSubmit} ready={pinReady} />
+          <Text style={styles.info2}>Didn't recieve code ? <Text style={{ textDecorationLine: 'underline' }}>Resend</Text></Text>
         </View>
-        </View>
+      </View>
     </SafeAreaView>
   )
 }
