@@ -59,7 +59,7 @@ const Checks = () => {
                         <Text style={styles.infoText}>
                             By clicking on the "Sign Up" button, you acknowledge that you've gone through and consent to iGospel's <Text style={{color: 'white'}}>Terms of Use.</Text>
                             {"\n"} {"\n"}
-                            Take a moment to go over iGospel's <Text style={{color: 'white'}}>Privacy Policy</Text> for insights into how they gather and utilize your personal data.
+                            Take a moment to go over iGospel's <Text style={{color: 'white'}}>Privacy Policy</Text> for insights into how they gather and utilize your personal data .
                         </Text>
 
                     </View>
