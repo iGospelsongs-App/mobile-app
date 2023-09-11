@@ -6,8 +6,9 @@ import manImg from '../../assets/images/flexing.png'
 import { LinearGradient } from 'expo-linear-gradient'
 import Checkbox from 'expo-checkbox';
 import Button1 from '../../components/Button1'
+import { useNavigation } from '@react-navigation/native'
 
-const Checks = () => {
+const Checks = ({navigation}) => {
     const [isChecked, setChecked] = useState(false);
     const [newsCheck, setNewsCheck] = useState(false);
 
@@ -19,10 +20,6 @@ const Checks = () => {
                 </View>
                 <ScrollView>
                 <View style={styles.imgWrapper}>
-                    <LinearGradient
-                        colors={['transparent', 'rgba(0, 0, 0, 0.723)', 'rgba(0, 0, 0, 0.972)', 'black']}
-                        style={styles.grad}
-                    />
                     <Image source={manImg} style={styles.img} resizeMode='cover' />
                 </View>
 
@@ -59,12 +56,12 @@ const Checks = () => {
                         <Text style={styles.infoText}>
                             By clicking on the "Sign Up" button, you acknowledge that you've gone through and consent to iGospel's <Text style={{color: 'white'}}>Terms of Use.</Text>
                             {"\n"} {"\n"}
-                            
+
                             Take a moment to go over iGospel's <Text style={{color: 'white'}}>Privacy Policy</Text> for insights into how they gather and utilize your personal data .
                         </Text>
 
                     </View>
-                    <Button1 onPress={() => {}} title="Proceed" ready={isChecked} />
+                    <Button1 onPress={() => navigation.navigate('account-success')} title="Proceed" ready={isChecked} />
                 </View>
                 </ScrollView>
             </View>
@@ -93,14 +90,6 @@ const styles = StyleSheet.create({
     },
     headerCont: {
         paddingHorizontal: 14
-    },
-    grad: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 150,
-        height: 200,
-        zIndex: 5
     },
     content: {
         marginTop: 50,

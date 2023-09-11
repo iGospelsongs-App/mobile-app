@@ -11,6 +11,7 @@ import Signup from './screens/auth/Signup';
 import ForgotPassword from './screens/auth/forgot-pword/ForgotPassword';
 import VerifyInput from './screens/auth/verify-email/VerifyInput';
 import Checks from './screens/auth/Checks';
+import AccountSuccess from './screens/auth/AccountSuccess';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,9 @@ export default function App() {
           headerShown: false,
         }} />
         <Stack.Screen name='checks' component={Checks} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name='account-success' component={AccountSuccess} options={{
           headerShown: false,
         }} />
         <Stack.Screen name='forgot-pword' component={ForgotPassword} options={{
