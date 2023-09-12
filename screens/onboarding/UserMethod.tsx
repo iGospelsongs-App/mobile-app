@@ -48,7 +48,7 @@ const UserMethod = ({navigation}) => {
             {/* login link */}
             <View>
                 <Text style={styles.loginLink}>Have an account? 
-                    <Text onPress={() => navigation.navigate('login')}>Log in</Text>
+                    <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('login')}>Log in</Text>
                 </Text>
             </View>
         </View>

@@ -33,7 +33,7 @@ const OnboardingSlide = ({item, data, slideIndex}: any) => {
                               </TouchableOpacity>
                               <Text style={styles.loginLink}>
                                 Have an account? 
-                                <Text onPress={() => navigation.navigate('login')}>Log in</Text>
+                                <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('login')}>Log in</Text>
                               </Text>
                           </>
 
