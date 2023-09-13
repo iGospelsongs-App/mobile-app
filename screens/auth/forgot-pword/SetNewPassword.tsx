@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../../components/ScreenHeader';
@@ -14,8 +14,6 @@ const SetNewPassword = ({ navigation }) => {
     const [password2, setPassword2] = useState<string>('');
     const [password2Error, setPassword2Error] = useState('');
     const [loading, setLoading] = useState(false)
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
@@ -79,7 +77,7 @@ const SetNewPassword = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.wrapper}>
                 {/* screen header section  */}
-                <ScreenHeader title="Login" />
+                <ScreenHeader title="Reset Password" />
                 {/* form section  */}
                 <View style={styles.form}>
                     <View style={{ marginBottom: 26 }}>
