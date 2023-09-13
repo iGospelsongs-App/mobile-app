@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserMethod from './screens/onboarding/UserMethod';
 import Onboarding from './screens/onboarding/Onboarding';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Login from './screens/auth/Login';
 import Signup from './screens/auth/Signup';
 import ForgotPassword from './screens/auth/forgot-pword/ForgotPassword';
@@ -36,7 +34,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name='onboarding' component={Onboarding} options={{
+        <Stack.Screen name='onboarding' component={Onboarding} options={{
           headerShown: false,
         }}  />
         <Stack.Screen name='auth-select' component={UserMethod} options={{
@@ -62,7 +60,7 @@ export default function App() {
         }} />
         <Stack.Screen name='verify-pword-code' component={VerifyCode} options={{
           headerShown: false,
-        }} /> */}
+        }} />
         <Stack.Screen name='set-new-pword' component={SetNewPassword} options={{
           headerShown: false,
         }} />
