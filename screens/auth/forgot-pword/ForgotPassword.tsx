@@ -4,8 +4,43 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import Button1 from '../../../components/Button1';
+import FormErrorText from '../../../components/FormErrorText';
 
 const ForgotPassword = ({ navigation }) => {
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const fieldsValidation = () => {
+        let isEmailValid = true;
+
+        if(email.trim() === '') {
+            setEmailError('Email is required')
+            isEmailValid = false;
+        } else if(!emailPattern.test(email)) {
+            setEmailError('Invalid Email')
+            isEmailValid = false;
+        } else {
+            setEmailError('')
+        }
+
+        const isValid = isEmailValid;
+
+        return isValid;
+    }
+
+    const handleEmail = (text: string) => {
+        setEmail(text);
+    }
+
+    const handleSubmit = () => {
+        if(fieldsValidation()) {
+            console.log(email)
+            setLoading(true)
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -13,7 +48,7 @@ const ForgotPassword = ({ navigation }) => {
                 {/* screen header section  */}
                 <View style={styles.header}>
                     <MaterialIcons onPress={() => navigation.goBack()} name="arrow-back-ios" size={24} color="white" />
-                    <Text style={styles.title}>Login</Text>
+                    <Text style={styles.title}>Forgot Password</Text>
                     <View></View>
                 </View>
 
@@ -28,11 +63,14 @@ const ForgotPassword = ({ navigation }) => {
                             style={styles.input}
                             selectionColor={'white'}
                             autoCapitalize='none'
+                            value={email}
+                            onChangeText={handleEmail}
                         />
+                        <FormErrorText errorCondition={emailError} />
                     </View>
 
                     {/* submit button  */}
-                    <Button1 onPress={() => {}} title='Continue' ready={false} />
+                    <Button1 onPress={handleSubmit} title='Continue' ready={true} loading={loading} />
                 </View>
             </View>
         </SafeAreaView>

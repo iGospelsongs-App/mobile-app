@@ -6,7 +6,7 @@ import OtpInput from '../../../components/OtpInput'
 import Button1 from '../../../components/Button1'
 
 
-const VerifyInput = () => {
+const VerifyCode = () => {
   const [code, setCode] = useState("");
   const [pinReady, setPinReady] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -39,7 +39,7 @@ const VerifyInput = () => {
   )
 }
 
-export default VerifyInput
+export default VerifyCode
 
 const styles = StyleSheet.create({
     container: {

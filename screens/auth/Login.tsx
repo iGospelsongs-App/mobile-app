@@ -121,7 +121,7 @@ const Login = ({ navigation }) => {
                     <Button1 onPress={handleSubmit} title='Continue' ready={true} loading={loading} />
 
                     <View>
-                        <Text style={styles.loginLink}>Don't an account?
+                        <Text style={styles.loginLink}>Don't have an account?
                             <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
                         </Text>
                     </View>

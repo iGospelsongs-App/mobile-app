@@ -12,6 +12,8 @@ import ForgotPassword from './screens/auth/forgot-pword/ForgotPassword';
 import VerifyInput from './screens/auth/verify-email/VerifyInput';
 import Checks from './screens/auth/Checks';
 import AccountSuccess from './screens/auth/AccountSuccess';
+import VerifyCode from './screens/auth/forgot-pword/VerifyCode';
+import SetNewPassword from './screens/auth/forgot-pword/SetNewPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='onboarding' component={Onboarding} options={{
+        {/* <Stack.Screen name='onboarding' component={Onboarding} options={{
           headerShown: false,
         }}  />
         <Stack.Screen name='auth-select' component={UserMethod} options={{
@@ -56,6 +58,12 @@ export default function App() {
           headerShown: false,
         }} />
         <Stack.Screen name='forgot-pword' component={ForgotPassword} options={{
+          headerShown: false,
+        }} />
+        <Stack.Screen name='verify-pword-code' component={VerifyCode} options={{
+          headerShown: false,
+        }} /> */}
+        <Stack.Screen name='set-new-pword' component={SetNewPassword} options={{
           headerShown: false,
         }} />
       </Stack.Navigator>
