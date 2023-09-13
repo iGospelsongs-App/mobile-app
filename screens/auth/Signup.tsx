@@ -4,13 +4,89 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
+import FormErrorText from '../../components/FormErrorText';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [fullname, setFullname] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullnameError, setFullnameError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const fieldsValidation = () => {
+    let isEmailValid = true;
+    let isPasswordValid = true;
+    let isfullnameValid = true;
+    let isUsernameValid = true;
+
+    if (fullname.trim() === '') {
+      setFullnameError('Full name is required')
+      isfullnameValid = false;
+    } else setFullnameError('')
+
+    if (username.trim() === '') {
+      setUsernameError('User name is required')
+      isUsernameValid = false;
+    } else setUsernameError('')
+
+    if (email.trim() === '') {
+      setEmailError('Email is required')
+      isEmailValid = false;
+    } else if (!emailPattern.test(email)) {
+      setEmailError('Invalid Email')
+      isEmailValid = false;
+    } else {
+      setEmailError('')
+    }
+
+    if (password.trim() === '') {
+      setPasswordError('Password is required')
+      isPasswordValid = false;
+    } else if (password.length < 6) {
+      setPasswordError('Password must be more than 6 char')
+      isPasswordValid = false;
+    } else {
+      setPasswordError('')
+    }
+
+    const isValid = isEmailValid && isPasswordValid && isfullnameValid && isUsernameValid;
+
+    return isValid;
+  }
+
+  const handleUsername = (text: string) => {
+    setUsername(text)
+  }
+
+  const handleFullname = (text: string) => {
+    setFullname(text)
+  }
+
+  const handleEmail = (text: string) => {
+    setEmail(text)
+  }
+
+  const handlePassword = (text: string) => {
+    setPassword(text)
+  }
+
+  const handleSubmit = () => {
+    if(fieldsValidation()) {
+      console.log(fullname, username, email, password)
+      setLoading(true)
+    }
+  }
 
   return (
 
@@ -30,7 +106,10 @@ const Signup = ({ navigation }) => {
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
+                value={fullname}
+                onChangeText={handleFullname}
               />
+              <FormErrorText errorCondition={fullnameError} />
             </View>
 
             {/* username  */}
@@ -42,7 +121,10 @@ const Signup = ({ navigation }) => {
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
+                value={username}
+                onChangeText={handleUsername}
               />
+              <FormErrorText errorCondition={usernameError} />
             </View>
 
             {/* email */}
@@ -56,11 +138,14 @@ const Signup = ({ navigation }) => {
                 style={styles.input}
                 selectionColor={'white'}
                 autoCapitalize='none'
+                value={email}
+                onChangeText={handleEmail}
               />
+              <FormErrorText errorCondition={emailError} />
             </View>
 
             {/* password  */}
-            <View style={{marginBottom: 10}}>
+            <View style={{ marginBottom: 26 }}>
               <Text style={styles.label}>Password</Text>
               <View style={styles.singleForm2}>
                 <TextInput
@@ -69,6 +154,8 @@ const Signup = ({ navigation }) => {
                   secureTextEntry={!showPassword}
                   autoCapitalize='none'
                   autoComplete='off'
+                  value={password}
+                  onChangeText={handlePassword}
                 />
                 <TouchableOpacity
                   style={styles.eye}
@@ -82,15 +169,16 @@ const Signup = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
+              <FormErrorText errorCondition={passwordError} />
             </View>
 
             {/* submit button  */}
-            <Button1 onPress={() => navigation.navigate('checks')} title="Continue" ready={true} />
+            <Button1 onPress={handleSubmit} title="Continue" ready={true} loading={loading} />
 
             {/* login link */}
             <View>
               <Text style={styles.loginLink}>Already Have an account?
-                <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('login')}> Log in</Text>
+                <Text style={{ color: '#FF375F' }} onPress={() => navigation.navigate('login')}> Log in</Text>
               </Text>
             </View>
           </View>
@@ -140,7 +228,6 @@ const styles = StyleSheet.create({
     marginBottom: 26
   },
   singleForm2: {
-    marginBottom: 26,
     borderRadius: 8,
     borderColor: '#D0D5DD',
     borderWidth: 1,
@@ -187,5 +274,5 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     marginTop: 30
-}
+  }
 })

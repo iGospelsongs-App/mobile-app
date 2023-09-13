@@ -1,16 +1,68 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
+import FormErrorText from '../../components/FormErrorText';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState<string>('');
+    const [emailError, setEmailError] = useState('');
+    const [password, setPassword] = useState<string>('');
+    const [passwordError, setPasswordError] = useState('');
+    const [loading, setLoading] = useState(false)
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    const fieldsValidation = () => {
+        let isEmailValid = true;
+        let isPasswordValid = true;
+
+        if(email.trim() === '') {
+            setEmailError('Email is required')
+            isEmailValid = false;
+        } else if(!emailPattern.test(email)) {
+            setEmailError('Invalid Email')
+            isEmailValid = false;
+        } else {
+            setEmailError('')
+        }
+
+        if(password.trim() === '') {
+            setPasswordError('Password is required')
+            isPasswordValid = false;
+        } else if(password.length < 6) {
+            setPasswordError('Password must be more than 6 char')
+            isPasswordValid = false;
+        } else {
+            setPasswordError('')
+        }
+
+        const isValid = isEmailValid && isPasswordValid;
+
+        return isValid;
+    }
+
+    const handleEmail = (text: string) => {
+        setEmail(text)
+    }
+
+    const handlePassword = (text: string) => {
+        setPassword(text)
+    }
+
+    const handleSubmit = () => {
+        if(fieldsValidation()) {
+            console.log(email, password)
+            setLoading(true)
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -28,11 +80,14 @@ const Login = ({ navigation }) => {
                             style={styles.input}
                             selectionColor={'white'}
                             autoCapitalize='none'
+                            value={email}
+                            onChangeText={handleEmail}
                         />
+                        <FormErrorText errorCondition={emailError} />
                     </View>
 
                     {/* password  */}
-                    <View>
+                    <View style={{marginBottom: 26}}>
                         <Text style={styles.label}>Password</Text>
                         <View style={styles.singleForm2}>
                             <TextInput
@@ -41,6 +96,8 @@ const Login = ({ navigation }) => {
                                 secureTextEntry={!showPassword}
                                 autoCapitalize='none'
                                 autoComplete='off'
+                                value={password}
+                                onChangeText={handlePassword}
                             />
                             <TouchableOpacity
                                 style={styles.eye}
@@ -54,13 +111,14 @@ const Login = ({ navigation }) => {
                                 />
                             </TouchableOpacity>
                         </View>
+                        <FormErrorText errorCondition={passwordError} />
                     </View>
 
                     {/* forgot password  */}
                     <Text style={styles.forgot} onPress={() => navigation.navigate('forgot-pword')}>Forgot Password?</Text>
 
                     {/* submit button  */}
-                    <Button1 onPress={() => {}} title='Continue' ready={false} />
+                    <Button1 onPress={handleSubmit} title='Continue' ready={true} loading={loading} />
 
                     <View>
                         <Text style={styles.loginLink}>Don't an account?
@@ -109,7 +167,6 @@ const styles = StyleSheet.create({
         marginBottom: 26
     },
     singleForm2: {
-        marginBottom: 26,
         borderRadius: 8,
         borderColor: '#D0D5DD',
         borderWidth: 1,

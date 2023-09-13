@@ -1,14 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const Button1 = ({title, onPress, ready}) => {
+const Button1 = ({title, onPress, ready, loading = false}) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.submitBtn, {
-            backgroundColor: ready ? 'white' : '#344054',
+        <TouchableOpacity onPress={onPress} disabled={loading} activeOpacity={0.8} style={[styles.submitBtn, {
+            backgroundColor: loading ? '#b3b3b3' : ready ? 'white' : '#344054',
         }]}>
             <Text style={[styles.submitText, {
                 color: ready ? 'black' : 'white',
-            }]}>{title}</Text>
+            }]}>{loading ? 'Loading...' : title}</Text>
         </TouchableOpacity>
     )
 }
