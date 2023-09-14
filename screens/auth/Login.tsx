@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios';
+import { AuthContext } from '../../context/authContext';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ const Login = ({ navigation }) => {
 
     const URL = 'https://igospelsongs.onrender.com/api/signin/';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const authCtx = useContext(AuthContext);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -68,6 +70,7 @@ const Login = ({ navigation }) => {
     const handlePostRequest = async () => {
         try {
             const response = await axios.post(URL, formValues);
+            authCtx.authenticate(response.data.token)
             setLoading(false);
             setEmail('');
             setPassword('');
