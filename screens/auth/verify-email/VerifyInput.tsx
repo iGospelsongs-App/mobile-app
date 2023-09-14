@@ -4,18 +4,39 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import ScreenHeader from '../../../components/ScreenHeader'
 import OtpInput from '../../../components/OtpInput'
 import Button1 from '../../../components/Button1'
+import axios from 'axios';
 
-
-const VerifyInput = () => {
+const VerifyInput = ({navigation}) => {
   const [code, setCode] = useState("");
   const [pinReady, setPinReady] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [loading, setLoading] = useState(false);
   const MAX_CODE_LENGTH = 4;
 
+  const URL = 'https://igospelsongs.onrender.com/api/verify_email/'
+
+  const formValue = {
+    UserOTP: code
+  }
+
+  const handlePostRequest = async () => {
+    try {
+      const response = await axios.post(URL, formValue)
+      setLoading(false)
+      setCode('')
+      navigation.navigate('checks')
+    } catch (error) {
+      setLoading(false)
+      // setErrorMessage(error)
+      console.log(error)
+    }
+  }
+
   const handleSubmit = () => {
-    console.log('our code is', code)
-    setLoading(true)
+    if(pinReady) {
+      setLoading(true)
+      handlePostRequest()
+    }
   }
 
   return (
