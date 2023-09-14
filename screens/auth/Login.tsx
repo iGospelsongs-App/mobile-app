@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
+import axios from 'axios';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -12,8 +13,10 @@ const Login = ({ navigation }) => {
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState<string>('');
     const [passwordError, setPasswordError] = useState('');
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
+    const URL = 'https://igospelsongs.onrender.com/api/signin/';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const togglePasswordVisibility = () => {
@@ -57,10 +60,30 @@ const Login = ({ navigation }) => {
         setPassword(text)
     }
 
+    const formValues = {
+        email,
+        password
+    }
+
+    const handlePostRequest = async () => {
+        try {
+            const response = await axios.post(URL, formValues);
+            setLoading(false);
+            setEmail('');
+            setPassword('');
+            console.log(response.data)
+        } catch (error) {
+            setLoading(false);
+            // setErrorMessage(error);
+            console.log(error)
+        }
+    }
+
     const handleSubmit = () => {
         if(fieldsValidation()) {
-            console.log(email, password)
+            setErrorMessage('')
             setLoading(true)
+            handlePostRequest()
         }
     }
 

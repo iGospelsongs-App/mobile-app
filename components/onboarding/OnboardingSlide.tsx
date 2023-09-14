@@ -2,7 +2,6 @@ import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View }
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 const {width, height} = Dimensions.get('window');
 
@@ -28,7 +27,7 @@ const OnboardingSlide = ({item, data, slideIndex}: any) => {
                   {
                       item.btn && (
                           <>
-                              <TouchableOpacity onPress={() => navigation.navigate('auth-select')} activeOpacity={0.8} style={styles.btnWrapper}>
+                              <TouchableOpacity onPress={() => navigation.replace('auth-select')} activeOpacity={0.8} style={styles.btnWrapper}>
                                   <Text style={styles.btnText}>Get Started</Text>
                               </TouchableOpacity>
                               <Text style={styles.loginLink}>

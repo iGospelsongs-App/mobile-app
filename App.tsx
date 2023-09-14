@@ -12,6 +12,8 @@ import Checks from './screens/auth/Checks';
 import AccountSuccess from './screens/auth/AccountSuccess';
 import VerifyCode from './screens/auth/forgot-pword/VerifyCode';
 import SetNewPassword from './screens/auth/forgot-pword/SetNewPassword';
+import AuthStack from './navigation/AuthStack';
+import { useState } from 'react';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export type RootStackParamList = {
 };
 
 export default function App() {
+  const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
   const [fontsLoaded] = useFonts({
     'sf-bold': require('./assets/fonts/sf-pro/sf-bold.otf'),
     'sf-med': require('./assets/fonts/sf-pro/sf-med.otf'),
@@ -33,38 +36,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='onboarding' component={Onboarding} options={{
-          headerShown: false,
-        }}  />
-        <Stack.Screen name='auth-select' component={UserMethod} options={{
-          headerShown: false,
-        }}  />
-         <Stack.Screen name='login' component={Login} options={{
-          headerShown: false,
-        }}  />
-        <Stack.Screen name='sign-up' component={Signup} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='verify-email' component={VerifyInput} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='checks' component={Checks} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='account-success' component={AccountSuccess} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='forgot-pword' component={ForgotPassword} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='verify-pword-code' component={VerifyCode} options={{
-          headerShown: false,
-        }} />
-        <Stack.Screen name='set-new-pword' component={SetNewPassword} options={{
-          headerShown: false,
-        }} />
-      </Stack.Navigator>
+      <AuthStack />
       <StatusBar style="auto" />
     </NavigationContainer>
   );
