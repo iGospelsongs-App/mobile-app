@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Platform, TextInput, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../components/ScreenHeader';
@@ -7,6 +7,7 @@ import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
+import Toast from 'react-native-toast-message';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +17,14 @@ const Login = ({ navigation }) => {
     const [passwordError, setPasswordError] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+
+    const showToast = () => {
+        Toast.show({
+          type: 'success',
+          text1: 'Hello',
+          text2: 'This is some something 👋'
+        });
+      }
 
     const URL = 'https://igospelsongs.onrender.com/api/signin/';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,11 +83,11 @@ const Login = ({ navigation }) => {
             setLoading(false);
             setEmail('');
             setPassword('');
-            console.log(response.data)
+            console.log(response.data.data.Error)
         } catch (error) {
             setLoading(false);
             // setErrorMessage(error);
-            console.log(error)
+            console.log(error.response.data.Error[0]);
         }
     }
 
