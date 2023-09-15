@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
 
 const Home = () => {
+  const authCtx = useContext(AuthContext);
+
   return (
     <View>
-      <Text>Home screen here</Text>
+      <Text style={{marginTop: 50}}>Home screen here</Text>
+      <Button title='logout' onPress={() => authCtx.logout()} />
     </View>
   )
 }

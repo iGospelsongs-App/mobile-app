@@ -68,6 +68,7 @@ const OtpInput = ({ setPinReady, code, setCode, maxLength }) => {
                 ref={textInputRef}
                 onBlur={handleOnBlur}
                 autoCapitalize="none"
+                keyboardType='number-pad'
             />
 
         </View>

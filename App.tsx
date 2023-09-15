@@ -8,6 +8,7 @@ import AuthContextProvider, { AuthContext } from './context/authContext';
 import AuthenticatedStack from './navigation/AuthenticatedStack';
 import * as SplashScreen from 'expo-splash-screen'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 const Stack = createNativeStackNavigator();
 
@@ -69,8 +70,10 @@ export default function App() {
 
   return (
     <AuthContextProvider>
+      <RootSiblingParent>
         <StatusBar style="auto" />
         <Root />
+      </RootSiblingParent>
     </AuthContextProvider>
   );
 

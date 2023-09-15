@@ -6,6 +6,7 @@ import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios'
+import Toast from 'react-native-root-toast';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +20,20 @@ const Signup = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('')
+  const [toastVisible, setToastVisible] = useState(false)
+
+  //hide the error toast after 5 seconds
+   const removeToast = () => {
+     const timer = setTimeout(() => {
+         setToastVisible(false)
+     }, 3000)
+
+     const removeTimer = () => {
+      clearTimeout(timer)
+     }
+
+     return {timer, removeTimer};
+   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const URL = 'https://igospelsongs.onrender.com/api/signup/'
