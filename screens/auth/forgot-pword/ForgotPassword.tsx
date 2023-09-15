@@ -5,13 +5,16 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import Button1 from '../../../components/Button1';
 import FormErrorText from '../../../components/FormErrorText';
+import axios from 'axios';
 
 const ForgotPassword = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('')
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const URL = 'https://igospelsongs.onrender.com/api/reset_password/'
 
     const fieldsValidation = () => {
         let isEmailValid = true;
@@ -35,10 +38,28 @@ const ForgotPassword = ({ navigation }) => {
         setEmail(text);
     }
 
+    const formValues = {
+        email
+    }
+
+    const handlePostRequest = async () => {
+        try {
+            const response = await axios.post(URL, formValues);
+            setLoading(false)
+            setEmail('')
+            navigation.navigate('verify-pword-code')
+        } catch(error) {
+            setLoading(false)
+            // setErrorMessage(error)
+            console.log(error)
+        }
+    }
+
     const handleSubmit = () => {
         if(fieldsValidation()) {
             console.log(email)
             setLoading(true)
+            handlePostRequest()
         }
     }
 
