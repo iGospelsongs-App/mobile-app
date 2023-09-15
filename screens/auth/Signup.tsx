@@ -23,17 +23,17 @@ const Signup = ({ navigation }) => {
   const [toastVisible, setToastVisible] = useState(false)
 
   //hide the error toast after 5 seconds
-   const removeToast = () => {
-     const timer = setTimeout(() => {
-         setToastVisible(false)
-     }, 3000)
+  const removeToast = () => {
+    const timer = setTimeout(() => {
+      setToastVisible(false)
+    }, 3000)
 
-     const removeTimer = () => {
+    const removeTimer = () => {
       clearTimeout(timer)
-     }
+    }
 
-     return {timer, removeTimer};
-   }
+    return { timer, removeTimer };
+  }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const URL = 'https://igospelsongs.onrender.com/api/signup/'
@@ -123,11 +123,14 @@ const Signup = ({ navigation }) => {
       setLoading(false)
       // setErrorMessage(error)
       console.log(error)
+      setToastVisible(true)
+      removeToast();
     }
   }
 
   const handleSubmit = () => {
-    if(fieldsValidation()) {
+    if (toastVisible) removeToast();
+    if (fieldsValidation()) {
       setErrorMessage('')
       setLoading(true)
       handlePostRequest()
@@ -220,6 +223,17 @@ const Signup = ({ navigation }) => {
 
             {/* submit button  */}
             <Button1 onPress={handleSubmit} title="Continue" ready={true} loading={loading} />
+            <Toast
+              duration={1}
+              visible={toastVisible}
+              position={50}
+              shadow={true}
+              hideOnPress={true}
+              animation={true}
+              backgroundColor='red'
+            >
+              {errorMessage && errorMessage}
+            </Toast>
 
             {/* login link */}
             <View>
