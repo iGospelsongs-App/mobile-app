@@ -5,8 +5,9 @@ import { Feather } from '@expo/vector-icons';
 import ScreenHeader from '../../../components/ScreenHeader';
 import Button1 from '../../../components/Button1';
 import FormErrorText from '../../../components/FormErrorText';
+import axios from 'axios';
 
-const SetNewPassword = ({ navigation }) => {
+const SetNewPassword = ({ navigation, route }) => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [password1, setPassword1] = useState<string>('');
@@ -14,6 +15,11 @@ const SetNewPassword = ({ navigation }) => {
     const [password2, setPassword2] = useState<string>('');
     const [password2Error, setPassword2Error] = useState('');
     const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    // get code from route params 
+    const {code, email} = route.params;
+    const URL = `https://igospelsongs.onrender.com/api/set_password/${code}/`
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
@@ -66,10 +72,28 @@ const SetNewPassword = ({ navigation }) => {
         setPassword2(text)
     }
 
+    const formmValue = {
+        password: password2
+    }
+
+    const handlePutRequest = async () => {
+        try {
+            const response = await axios.put(URL, formmValue);
+            setLoading(false)
+            setPassword1('')
+            setPassword2('')
+            console.log(response.data)
+        } catch (error) {
+            setLoading(false)
+            // setErrorMessage(error)
+            console.log(error)
+        }
+    }
+
     const handleSubmit = () => {
         if (fieldsValidation()) {
-            console.log(password1, password2)
             setLoading(true)
+            handlePutRequest()
         }
     }
 

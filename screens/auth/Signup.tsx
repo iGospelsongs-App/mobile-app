@@ -143,7 +143,7 @@ const Signup = ({ navigation }) => {
       <View style={styles.wrapper}>
         {/* screen header section  */}
         <ScreenHeader title="Create Account" />
-        <ScrollView style={styles.cover}>
+        <ScrollView keyboardShouldPersistTaps="handled" style={styles.cover}>
           {/* form section  */}
           <View style={styles.form}>
             {/* full name */}
@@ -222,7 +222,7 @@ const Signup = ({ navigation }) => {
             </View>
 
             {/* submit button  */}
-            <Button1 onPress={handleSubmit} title="Continue" ready={true} loading={loading} />
+            <Button1 onPress={handleSubmit} title="Proceed" ready={true} loading={loading} />
             <Toast
               duration={1}
               visible={toastVisible}

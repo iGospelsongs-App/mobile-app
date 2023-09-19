@@ -117,7 +117,7 @@ const Login = ({ navigation }) => {
                 {/* form section  */}
                 <View style={styles.form}>
                     <View style={styles.singleForm}>
-                        <Text style={styles.label}>Username or Email</Text>
+                        <Text style={styles.label}>Email</Text>
                         <TextInput
                             enterKeyHint='next'
                             autoComplete='email'

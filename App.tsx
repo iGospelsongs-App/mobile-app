@@ -51,7 +51,7 @@ const Root = () => {
 
   //wait for the authentication check to complete before renderning the navigation component
   if(isTryingLogin) return null;
-
+ 
   return <Navigation />
 }
 
