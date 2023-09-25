@@ -84,18 +84,22 @@ const Signup = ({ navigation }) => {
   }
 
   const handleUsername = (text: string) => {
+    setErrorMessage('')
     setUsername(text)
   }
 
   const handleFullname = (text: string) => {
+    setErrorMessage('')
     setFullname(text)
   }
 
   const handleEmail = (text: string) => {
+    setErrorMessage('')
     setEmail(text)
   }
 
   const handlePassword = (text: string) => {
+    setErrorMessage('')
     setPassword(text)
   }
 
