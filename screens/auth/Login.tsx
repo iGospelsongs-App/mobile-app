@@ -127,6 +127,7 @@ const Login = ({ navigation }) => {
                             autoCapitalize='none'
                             value={email}
                             onChangeText={handleEmail}
+                            keyboardType='email-address'
                         />
                         <FormErrorText errorCondition={emailError} />
                     </View>

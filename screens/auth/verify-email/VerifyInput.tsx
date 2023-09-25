@@ -5,6 +5,7 @@ import ScreenHeader from '../../../components/ScreenHeader'
 import OtpInput from '../../../components/OtpInput'
 import Button1 from '../../../components/Button1'
 import axios from 'axios';
+import FormErrorText from '../../../components/FormErrorText'
 
 const VerifyInput = ({navigation}) => {
   const [code, setCode] = useState("");
@@ -27,13 +28,14 @@ const VerifyInput = ({navigation}) => {
       navigation.navigate('checks')
     } catch (error) {
       setLoading(false)
-      // setErrorMessage(error)
-      console.log(error)
+      setErrorMessage('Wrong input code')
+      console.log(errorMessage)
     }
   }
 
   const handleSubmit = () => {
     if(pinReady) {
+      setErrorMessage('')
       setLoading(true)
       handlePostRequest()
     }
@@ -50,7 +52,9 @@ const VerifyInput = ({navigation}) => {
             code={code}
             setCode={setCode}
             maxLength={MAX_CODE_LENGTH}
+            error={errorMessage !== ''}
           />
+          <FormErrorText errorCondition={errorMessage} position='left' />
           <Text style={styles.info2}>Enter 4-digit code</Text>
           <Button1 title='Proceed' onPress={handleSubmit} ready={pinReady} loading={loading} />
           <Text style={styles.info2}>Didn't recieve code ? <Text style={{ textDecorationLine: 'underline' }}>Resend</Text></Text>
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     content: {
       marginTop: 100,
       justifyContent: 'space-between',
-      alignItems: 'center',
+      // alignItems: 'center',
     },
     info: {
       fontSize: 16,

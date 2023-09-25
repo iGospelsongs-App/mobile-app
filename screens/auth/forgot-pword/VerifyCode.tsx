@@ -5,6 +5,7 @@ import ScreenHeader from '../../../components/ScreenHeader'
 import OtpInput from '../../../components/OtpInput'
 import Button1 from '../../../components/Button1'
 import axios from 'axios'
+import FormErrorText from '../../../components/FormErrorText'
 
 
 const VerifyCode = ({navigation, route}) => {
@@ -34,13 +35,14 @@ const VerifyCode = ({navigation, route}) => {
       navigation.navigate('set-new-pword', valuesToSend)
     } catch (error) {
       setLoading(false)
-      // setErrorMessage(error)
+      setErrorMessage('Wrong input code')
       console.log(error)
     }
   }
 
   const handleSubmit = () => {
     if(pinReady) {
+      setErrorMessage('')
       setLoading(true);
       handlePostRequest();
     }
@@ -57,7 +59,9 @@ const VerifyCode = ({navigation, route}) => {
             code={code}
             setCode={setCode}
             maxLength={MAX_CODE_LENGTH}
+            error={errorMessage !== ''}
           />
+          <FormErrorText errorCondition={errorMessage} position='left' />
           <Text style={styles.info2}>Enter 4-digit code</Text>
           <Button1 title='Proceed' onPress={handleSubmit} ready={pinReady} loading={loading} />
           <Text style={styles.info2}>Didn't recieve code ? <Text style={{ textDecorationLine: 'underline' }}>Resend</Text></Text>

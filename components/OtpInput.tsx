@@ -1,7 +1,7 @@
 import { View, Text, TextInput, Pressable, Keyboard, StyleSheet } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 
-const OtpInput = ({ setPinReady, code, setCode, maxLength }) => {
+const OtpInput = ({ setPinReady, code, setCode, maxLength, error }) => {
     const arr = new Array(maxLength).fill(0);
     const textInputRef = useRef(null)
     const [inputIsFocused, setInputIsFocused] = useState(false)
@@ -33,12 +33,12 @@ const OtpInput = ({ setPinReady, code, setCode, maxLength }) => {
             <View
                 key={index}
                 style={[styles.inputWrapper, {
-                    borderColor: inputIsFocused && isDigitFocused ? 'white' : '#667085'
+                    borderColor: inputIsFocused && isDigitFocused ? 'white' : error ? 'red' : '#667085'
                 }]}
             >
                 <Text
                     style={{
-                        color: '#667085',
+                        color: error ? 'red' : '#667085',
                         fontSize: 45,
                         fontFamily: 'sf-med',
                     }}

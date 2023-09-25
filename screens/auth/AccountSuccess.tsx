@@ -13,7 +13,7 @@ const AccountSuccess = ({navigation}) => {
             <Image source={img} style={styles.img} />
             <Text style={styles.title}>Congratulations</Text>
             <Text style={styles.desc}>Start listening to quality gospel music.</Text>
-            <Button1 onPress={() => navigation.navigate('login')} title='Start Listening' ready={true} />
+            <Button1 onPress={() => navigation.navigate('login')} title='Start Listening' colored ready={true} />
         </View>
     </View>
   )

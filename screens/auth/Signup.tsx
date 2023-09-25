@@ -110,9 +110,11 @@ const Signup = ({ navigation }) => {
     email
   }
 
+  //GBOLAHAN IS NOT GIVING ME THE ERROR TO CATCH HERE, SO I HAVE TO WAIT FOR HIM TO GIVE ME
   const handlePostRequest = async () => {
     try {
       const response = await axios.post(URL, formValue)
+      console.log(response.data)
       setLoading(false)
       setUsername('')
       setFullname('')
@@ -120,9 +122,9 @@ const Signup = ({ navigation }) => {
       setPassword('')
       navigation.navigate('verify-email')
     } catch (error) {
+      console.log('there is an error here')
       setLoading(false)
       // setErrorMessage(error)
-      console.log(error)
       setToastVisible(true)
       removeToast();
     }
