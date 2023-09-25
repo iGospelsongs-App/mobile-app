@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const FormErrorText = ({errorCondition, position='center'}) => {
+const FormErrorText = ({errorCondition, position='left'}) => {
   if(errorCondition)
 
   return (
-    <Text style={[styles.txt, {textAlign: position === 'center' ? 'center' : 'left'}]}>
+    <Text style={[styles.txt, {textAlign: position === 'left' ? 'left' : 'center'}]}>
       {errorCondition}
     </Text>
   )

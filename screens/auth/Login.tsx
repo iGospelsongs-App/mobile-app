@@ -7,7 +7,6 @@ import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
-import Toast from 'react-native-root-toast';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -17,21 +16,6 @@ const Login = ({ navigation }) => {
     const [passwordError, setPasswordError] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [toastVisible, setToastVisible] = useState(false)
-
-    //hide the error toast after 5 seconds
-     const removeToast = () => {
-       const timer = setTimeout(() => {
-           setToastVisible(false)
-       }, 3000)
-
-       const removeTimer = () => {
-        clearTimeout(timer)
-       }
-
-       return {timer, removeTimer};
-     }
-    
 
     const URL = 'https://igospelsongs.onrender.com/api/signin/';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -71,10 +55,12 @@ const Login = ({ navigation }) => {
     }
 
     const handleEmail = (text: string) => {
+        setErrorMessage('')
         setEmail(text)
     }
 
     const handlePassword = (text: string) => {
+        setErrorMessage('')
         setPassword(text)
     }
 
@@ -95,13 +81,10 @@ const Login = ({ navigation }) => {
             setLoading(false);
             setErrorMessage(error.response.data.Error[0]);
             console.log(error.response.data.Error[0]);
-            setToastVisible(true)
-            removeToast()
         }
     }
 
     const handleSubmit = () => {
-        if(toastVisible) removeToast();
         if(fieldsValidation()) {
             setErrorMessage('')
             setLoading(true)
@@ -130,6 +113,7 @@ const Login = ({ navigation }) => {
                             keyboardType='email-address'
                         />
                         <FormErrorText errorCondition={emailError} />
+                        <FormErrorText errorCondition={errorMessage} />
                     </View>
 
                     {/* password  */}
@@ -158,6 +142,7 @@ const Login = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                         <FormErrorText errorCondition={passwordError} />
+                        <FormErrorText errorCondition={errorMessage} />
                     </View>
 
                     {/* forgot password  */}
@@ -165,17 +150,6 @@ const Login = ({ navigation }) => {
 
                     {/* submit button  */}
                     <Button1 onPress={handleSubmit} title='Continue' ready={true} loading={loading} />
-                    <Toast 
-                        duration={1}
-                        visible={toastVisible}
-                        position={50}
-                        shadow={true}
-                        hideOnPress={true}
-                        animation={true}
-                        backgroundColor='red'
-                    >
-                        {errorMessage && errorMessage}
-                    </Toast>
                     <View>
                         <Text style={styles.loginLink}>Don't have an account?
                             <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
