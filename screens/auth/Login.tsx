@@ -7,6 +7,7 @@ import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
+import { StatusBar } from 'expo-status-bar';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -94,6 +95,7 @@ const Login = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar style="light" />
             <View style={styles.wrapper}>
                 {/* screen header section  */}
                 <ScreenHeader title="Login" />

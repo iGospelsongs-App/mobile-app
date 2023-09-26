@@ -3,10 +3,8 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ScreenHeader from '../../components/ScreenHeader'
 import manImg from '../../assets/images/flexing.png'
-import { LinearGradient } from 'expo-linear-gradient'
 import Checkbox from 'expo-checkbox';
 import Button1 from '../../components/Button1'
-import { useNavigation } from '@react-navigation/native'
 
 const Checks = ({navigation}) => {
     const [isChecked, setChecked] = useState(false);

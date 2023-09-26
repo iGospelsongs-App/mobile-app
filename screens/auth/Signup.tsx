@@ -7,6 +7,7 @@ import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios'
 import Toast from 'react-native-root-toast';
+import { StatusBar } from 'expo-status-bar';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,20 +21,7 @@ const Signup = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('')
-  const [toastVisible, setToastVisible] = useState(false)
 
-  //hide the error toast after 5 seconds
-  const removeToast = () => {
-    const timer = setTimeout(() => {
-      setToastVisible(false)
-    }, 3000)
-
-    const removeTimer = () => {
-      clearTimeout(timer)
-    }
-
-    return { timer, removeTimer };
-  }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const URL = 'https://igospelsongs.onrender.com/api/signup/'
@@ -114,11 +102,9 @@ const Signup = ({ navigation }) => {
     email
   }
 
-  //GBOLAHAN IS NOT GIVING ME THE ERROR TO CATCH HERE, SO I HAVE TO WAIT FOR HIM TO GIVE ME
   const handlePostRequest = async () => {
     try {
       const response = await axios.post(URL, formValue)
-      console.log(response.data)
       setLoading(false)
       setUsername('')
       setFullname('')
@@ -126,16 +112,13 @@ const Signup = ({ navigation }) => {
       setPassword('')
       navigation.navigate('verify-email')
     } catch (error) {
-      console.log('there is an error here')
+      console.log(error.response.data.Error)
       setLoading(false)
-      // setErrorMessage(error)
-      setToastVisible(true)
-      removeToast();
+      setErrorMessage(error.response.data.Error)
     }
   }
 
   const handleSubmit = () => {
-    if (toastVisible) removeToast();
     if (fieldsValidation()) {
       setErrorMessage('')
       setLoading(true)
@@ -146,6 +129,7 @@ const Signup = ({ navigation }) => {
   return (
 
     <SafeAreaView style={styles.container}>
+      <StatusBar style="light" />
       <View style={styles.wrapper}>
         {/* screen header section  */}
         <ScreenHeader title="Create Account" />
@@ -197,6 +181,7 @@ const Signup = ({ navigation }) => {
                 onChangeText={handleEmail}
               />
               <FormErrorText errorCondition={emailError} />
+              <FormErrorText errorCondition={errorMessage} />
             </View>
 
             {/* password  */}
@@ -229,17 +214,6 @@ const Signup = ({ navigation }) => {
 
             {/* submit button  */}
             <Button1 onPress={handleSubmit} title="Proceed" ready={true} loading={loading} />
-            <Toast
-              duration={1}
-              visible={toastVisible}
-              position={50}
-              shadow={true}
-              hideOnPress={true}
-              animation={true}
-              backgroundColor='red'
-            >
-              {errorMessage && errorMessage}
-            </Toast>
 
             {/* login link */}
             <View>

@@ -42,10 +42,11 @@ const ForgotPassword = ({ navigation }) => {
         email
     }
 
+    // TODO: fix error component issue here when Gbolahan fix the endpoint
     const handlePostRequest = async () => {
         try {
             const response = await axios.post(URL, formValues);
-            console.log(response)
+            // console.log(response)
             setLoading(false)
             setEmail('')
             navigation.navigate('verify-pword-code', email)

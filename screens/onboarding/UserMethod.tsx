@@ -3,12 +3,14 @@ import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import googleIcon from '../../assets/images/google.png'
+import { StatusBar } from 'expo-status-bar';
 
 const windowHeight = Dimensions.get('window').height;
 
 const UserMethod = ({navigation}) => {
     return (
         <View style={styles.container}>
+            <StatusBar style="light" />
             {/* header   */}
             <View style={styles.headerSection}>
                 <ImageBackground
