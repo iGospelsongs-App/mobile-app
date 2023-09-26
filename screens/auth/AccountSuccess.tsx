@@ -2,13 +2,13 @@ import { Image, StyleSheet, Text, View, Platform } from 'react-native'
 import React from 'react'
 import img from '../../assets/images/listen.png'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { StatusBar } from 'react-native';
 import Button1 from '../../components/Button1';
+import { StatusBar } from 'expo-status-bar';
 
 const AccountSuccess = ({navigation}) => {
   return (
     <View style={styles.container}>
-        <StatusBar translucent backgroundColor="transparent" />
+        <StatusBar style="dark" />
         <View style={styles.wrapper}>
             <Image source={img} style={styles.img} />
             <Text style={styles.title}>Congratulations</Text>

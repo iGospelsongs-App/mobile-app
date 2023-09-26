@@ -6,6 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import Button1 from '../../../components/Button1';
 import FormErrorText from '../../../components/FormErrorText';
 import axios from 'axios';
+import { StatusBar } from 'expo-status-bar';
 
 const ForgotPassword = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -67,6 +68,7 @@ const ForgotPassword = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar style="light" />
             <View style={styles.wrapper}>
                 {/* screen header section  */}
                 <View style={styles.header}>
