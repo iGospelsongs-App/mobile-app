@@ -80,8 +80,8 @@ const Login = ({ navigation }) => {
             console.log(response.data)
         } catch (error) {
             setLoading(false);
-            setErrorMessage(error.response.data.Error[0]);
-            console.log(error.response.data.Error[0]);
+            setErrorMessage(error.response.data.Error);
+            console.log(error.response.data.Error);
         }
     }
 

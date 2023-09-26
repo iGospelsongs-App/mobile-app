@@ -46,7 +46,7 @@ const ForgotPassword = ({ navigation }) => {
     const handlePostRequest = async () => {
         try {
             const response = await axios.post(URL, formValues);
-            // console.log(response)
+            console.log(response)
             setLoading(false)
             setEmail('')
             navigation.navigate('verify-pword-code', email)
