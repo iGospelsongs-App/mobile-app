@@ -36,6 +36,7 @@ const ForgotPassword = ({ navigation }) => {
     }
 
     const handleEmail = (text: string) => {
+        setErrorMessage('')
         setEmail(text);
     }
 
@@ -43,24 +44,22 @@ const ForgotPassword = ({ navigation }) => {
         email
     }
 
-    // TODO: fix error component issue here when Gbolahan fix the endpoint
     const handlePostRequest = async () => {
         try {
             const response = await axios.post(URL, formValues);
-            console.log(response)
             setLoading(false)
             setEmail('')
             navigation.navigate('verify-pword-code', email)
         } catch(error) {
             setLoading(false)
-            // setErrorMessage(error)
-            console.log(error)
+            setErrorMessage(error.response.data.Error)
+            console.log(error.response.data.Error)
         }
     }
 
     const handleSubmit = () => {
         if(fieldsValidation()) {
-            console.log(email)
+            setErrorMessage('')
             setLoading(true)
             handlePostRequest()
         }
@@ -92,6 +91,7 @@ const ForgotPassword = ({ navigation }) => {
                             onChangeText={handleEmail}
                         />
                         <FormErrorText errorCondition={emailError} />
+                        <FormErrorText errorCondition={errorMessage} />
                     </View>
 
                     {/* submit button  */}
