@@ -82,7 +82,7 @@ const SetNewPassword = ({ navigation, route }) => {
             setLoading(false)
             setPassword1('')
             setPassword2('')
-            console.log(response.data)
+            navigation.navigate('login')
         } catch (error) {
             setLoading(false)
             // setErrorMessage(error)
