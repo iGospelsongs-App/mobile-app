@@ -95,7 +95,8 @@ const Signup = ({ navigation }) => {
     Fullname: fullname,
     email,
     username,
-    password
+    password,
+    upload_image: "jjskdjksj",
   }
 
   const dataToSend = {
@@ -112,7 +113,7 @@ const Signup = ({ navigation }) => {
       setPassword('')
       navigation.navigate('verify-email')
     } catch (error) {
-      console.log(error.response.data.Error)
+      console.log(error.response.data)
       setLoading(false)
       setErrorMessage(error.response.data.Error)
     }
