@@ -1,4 +1,4 @@
-import { Platform, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Platform, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
@@ -11,30 +11,50 @@ import frame1 from '../../assets/images/frame1.png'
 import frame2 from '../../assets/images/frame2.png'
 import frame3 from '../../assets/images/frame3.png'
 import frame4 from '../../assets/images/frame4.png'
+import frame5 from '../../assets/images/frame5.png'
+import frame6 from '../../assets/images/frame6.png'
+import CardItem from '../../components/home/CardItem'
 
 interface DataProp {
   title: string,
   image: any,
+  id: string
 }
 
 const data: DataProp[] = [
   {
     title: 'Journey to the deep',
-    image: frame1
+    image: frame1,
+    id: '1'
   },
   {
     title: 'Walk by faith',
-    image: frame2
+    image: frame2,
+    id: '2'
   },
   {
     title: 'The birth of revival',
-    image: frame4
+    image: frame4,
+    id: '3'
   },
   {
     title: 'Hallelujah',
-    image: frame3
+    image: frame3,
+    id: '4'
+  },
+  {
+    title: 'Tongues of fire',
+    image: frame5,
+    id: '5'
+  },
+  {
+    title: 'Miracle no dey tire Jesus',
+    image: frame6,
+    id: '6'
   },
 ]
+
+const reversedData = [...data].reverse()
 
 const Home = () => {
 
@@ -79,31 +99,26 @@ const Home = () => {
             {/* top songs section  */}
             <View style={{marginBottom: 67}}>
               <SectionHeader title="Top songs in Nigeria" color='#30A712' />
-              <ScrollView horizontal style={styles.itemList}>
-                {
-                  data.map((item, i) => (
-                    <TouchableOpacity activeOpacity={0.8} key={i} style={styles.cardCover}>
-                      <Image source={item.image} style={styles.cardImg} />
-                      <Text style={styles.cardDesc}>{item.title}</Text>
-                    </TouchableOpacity>
-                  ))
-                }
-              </ScrollView>
+
+                <FlatList 
+                  data={data}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({item}) => <CardItem item={item} />}
+                  horizontal
+                  bounces={false}
+                />
             </View>
 
             {/* praise melodies section */}
             <View>
               <SectionHeader title="Praise melodies" color='#E31b54' />
-              <ScrollView horizontal style={styles.itemList}>
-                {
-                  data.map((item, i) => (
-                    <TouchableOpacity activeOpacity={0.8} key={i} style={styles.cardCover}>
-                      <Image source={item.image} style={styles.cardImg} />
-                      <Text style={styles.cardDesc}>{item.title}</Text>
-                    </TouchableOpacity>
-                  )).reverse()
-                }
-              </ScrollView>
+              <FlatList
+                data={reversedData}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <CardItem item={item} />}
+                horizontal
+                bounces={false}
+              />
             </View>
 
           </View>
@@ -178,20 +193,6 @@ const styles = StyleSheet.create({
   },
   itemsSection: {
     marginTop: 30
-  },
-  cardCover: {
-    width: 137,
-    marginRight: 16
-  },
-  cardImg: {
-    width: 137, 
-    height: 137
-  },
-  cardDesc: {
-    color: 'white',
-    fontSize: 12,
-    fontFamily: 'sf-med',
-    marginTop: 12
   },
   itemList: {
     flexDirection: 'row',
