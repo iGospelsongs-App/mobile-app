@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar'
 import dp from '../../assets/images/dp.png'
 import bell from '../../assets/images/bell.png'
 import settings from '../../assets/images/settings.png'
-import newRelease from '../../assets/images/new.png'
 import SectionHeader from '../../components/SectionHeader'
 import frame1 from '../../assets/images/frame1.png'
 import frame2 from '../../assets/images/frame2.png'
@@ -14,6 +13,7 @@ import frame4 from '../../assets/images/frame4.png'
 import frame5 from '../../assets/images/frame5.png'
 import frame6 from '../../assets/images/frame6.png'
 import CardItem from '../../components/home/CardItem'
+import TopSlider from '../../components/home/TopSlider'
 
 interface DataProp {
   title: string,
@@ -86,12 +86,7 @@ const Home = () => {
         <View style={styles.content}>
           {/* slide section  */}
           <View>
-            <View style={styles.slideSection}>
-              <Image source={newRelease} resizeMode='stretch' style={{
-                width: '100%',
-                height: 165
-              }} />
-            </View>
+            <TopSlider />
           </View>
 
           {/* items  */}
