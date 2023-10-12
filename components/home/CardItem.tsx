@@ -1,9 +1,11 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const CardItem = ({item}) => {
+  const navigation = useNavigation<any>();
     return (
-        <TouchableOpacity activeOpacity={0.8} style={styles.cardCover}>
+        <TouchableOpacity onPress={() => navigation.navigate('playlist')} activeOpacity={0.8} style={styles.cardCover}>
             <Image source={item.image} style={styles.cardImg} />
             <Text style={styles.cardDesc}>{item.title}</Text>
         </TouchableOpacity>

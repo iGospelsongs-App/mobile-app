@@ -15,6 +15,7 @@ const Stack = createNativeStackNavigator();
 export type RootStackParamList = {
   onboarding: { id: number } | undefined;
   userMethod: { id: number } | undefined;
+  playlist: {id: number} | undefined
 };
 
 
