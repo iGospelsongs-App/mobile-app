@@ -14,6 +14,7 @@ import frame5 from '../../assets/images/frame5.png'
 import frame6 from '../../assets/images/frame6.png'
 import CardItem from '../../components/home/CardItem'
 import TopSlider from '../../components/home/TopSlider'
+import Header from '../../components/home/Header'
 
 interface DataProp {
   title: string,
@@ -63,23 +64,7 @@ const Home = () => {
       <StatusBar style="light" />
 
       {/* header section  */}
-      <SafeAreaView style={styles.header}>
-        {/* left section */}
-        <View style={styles.headerLeft}>
-          <View style={styles.imageCont}>
-            <Image source={dp} style={styles.dp} />
-          </View>
-          <View style={styles.nameCont}>
-            <Text style={styles.greet}>Good Morning</Text>
-            <Text style={styles.name}>Omatsola Sunday</Text>
-          </View>
-        </View>
-        {/* right section  */}
-        <View style={styles.headerRight}>
-          <Image source={bell} />
-          <Image source={settings} style={styles.sett} />
-        </View>
-      </SafeAreaView>
+      <Header />
 
       <ScrollView style={styles.wrapper} showsHorizontalScrollIndicator={false}>
         {/* contents  */}
@@ -141,44 +126,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingBottom: 25
-  },
-  dp: {
-    width: 35,
-    height: 35,
-    borderRadius: 50,
-  },
-  imageCont: {
-
-  }, 
-  nameCont: {
-      paddingLeft: 8
-  },
-  name: {
-      fontSize: 15,
-      fontFamily: 'sf-med',
-      color: 'white'
-  },
-  greet: {
-      fontSize: 14,
-      fontFamily: 'sf-reg',
-      color: '#636366'
-  },
-  header: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      marginTop: 18,
-      paddingHorizontal: 16,
-      marginBottom: Platform.OS === 'android' ? 20 : -10,
-  },
-  headerLeft: {
-      flexDirection: "row",
-  },
-  headerRight: {
-      flexDirection: 'row',
-  },
-  sett: {
-      marginLeft: 16
   },
   slideSection: {
     marginTop: 24,

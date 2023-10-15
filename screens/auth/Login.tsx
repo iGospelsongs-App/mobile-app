@@ -8,6 +8,7 @@ import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
 import { StatusBar } from 'expo-status-bar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -78,10 +79,12 @@ const Login = ({ navigation }) => {
             setEmail('');
             setPassword('');
             console.log(response.data)
+            //TODO: make sure to delete the profile from the async storage when we click the logout button
+            AsyncStorage.setItem('user_profile', JSON.stringify(response.data.user_info))
         } catch (error) {
             setLoading(false);
             setErrorMessage(error.response.data.Error);
-            console.log(error.response.data.Error);
+            console.log(error);
         }
     }
 
