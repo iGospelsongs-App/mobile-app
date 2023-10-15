@@ -1,10 +1,9 @@
 import { Image, StyleSheet, Text, View, Platform } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import dp from '../../assets/images/dp.png'
 import bell from '../../assets/images/bell.png'
 import settings from '../../assets/images/settings.png'
-import { AuthContext } from '../../context/authContext'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface ProfileProps {
@@ -21,7 +20,19 @@ interface ProfileProps {
 
 const Header = () => {
   const [userProfile, setUserProfile] = useState<ProfileProps>();
+  const [greeting, setGreeting] = useState('')
 
+  const getTimeOfDay = () => {
+    const currentHour = new Date().getHours();
+
+    if (currentHour >= 5 && currentHour < 12) {
+      setGreeting('Good morning');
+    } else if (currentHour >= 12 && currentHour < 17) {
+      setGreeting('Good afternoon');
+    } else {
+      setGreeting('Good evening');
+    }
+  }
 
   const fetchUserProfile = async () => {
     try{
@@ -38,6 +49,7 @@ const Header = () => {
 
   useEffect(() => {
     fetchUserProfile();
+    getTimeOfDay();
   }, [])
 
   return (
@@ -48,7 +60,7 @@ const Header = () => {
         <Image source={dp} style={styles.dp} />
       </View>
       <View style={styles.nameCont}>
-        <Text style={styles.greet}>Good Morning</Text>
+        <Text style={styles.greet}>{greeting}</Text>
         <Text style={styles.name}>{userProfile?.Fullname}</Text>
       </View>
     </View>
