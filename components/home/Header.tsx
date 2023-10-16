@@ -40,7 +40,6 @@ const Header = () => {
       if(profile !== null) {
         const parsedProfile = JSON.parse(profile)
         setUserProfile(parsedProfile)
-        console.log('OUR PROFILE DATA IS', parsedProfile)
       }
     } catch (error) {
       console.log(error)
@@ -57,7 +56,12 @@ const Header = () => {
     {/* left section */}
     <View style={styles.headerLeft}>
       <View style={styles.imageCont}>
-        <Image source={dp} style={styles.dp} />
+        {/* <Image source={dp} style={styles.dp} /> */}
+        <View style={styles.textDpWrapper}>
+          <Text style={styles.textDp}>
+            {userProfile?.Username.slice(0, 1).toUpperCase()}
+          </Text>
+        </View>
       </View>
       <View style={styles.nameCont}>
         <Text style={styles.greet}>{greeting}</Text>
@@ -114,4 +118,17 @@ const styles = StyleSheet.create({
           fontFamily: 'sf-reg',
           color: '#636366'
       },
+      textDpWrapper: {
+        width: 35,
+        height: 35,
+        backgroundColor: '#E31B54',
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      textDp: {
+        color: 'white',
+        fontFamily: 'sf-bold',
+        fontSize: 20,
+      }
 })

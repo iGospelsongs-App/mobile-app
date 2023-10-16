@@ -25,7 +25,7 @@ const VerifyInput = ({navigation}) => {
       const response = await axios.post(URL, formValue)
       setLoading(false)
       setCode('')
-      navigation.navigate('checks')
+      navigation.navigate('account-success')
     } catch (error) {
       setLoading(false)
       setErrorMessage('Wrong input code')

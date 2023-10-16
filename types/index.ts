@@ -11,3 +11,14 @@ export interface OnboardingSlideType {
     item: OnboardingDataType,
     slideIndex: number,
 }
+
+export interface SignupType {
+    cover_image: string;
+    image: string;
+    full_name: string;
+    email: string;
+    username: string;
+    password: string;
+    agreement: boolean;
+    newsletter: boolean;
+}

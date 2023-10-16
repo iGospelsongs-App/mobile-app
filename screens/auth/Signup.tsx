@@ -6,8 +6,9 @@ import ScreenHeader from '../../components/ScreenHeader';
 import Button1 from '../../components/Button1';
 import FormErrorText from '../../components/FormErrorText';
 import axios from 'axios'
-import Toast from 'react-native-root-toast';
 import { StatusBar } from 'expo-status-bar';
+import Checkbox from 'expo-checkbox';
+import { SignupType } from '../../types';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +22,8 @@ const Signup = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('')
+  const [agreementChecked, setAgreementChecked] = useState(false);
+  const [newsCheck, setNewsCheck] = useState(false)
 
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,12 +94,15 @@ const Signup = ({ navigation }) => {
     setPassword(text)
   }
 
-  const formValue = {
-    Fullname: fullname,
+  const formValue: SignupType = {
+    cover_image: null,
+    image: null,
+    full_name: fullname,
     email,
     username,
     password,
-    upload_image: "jjskdjksj",
+    agreement: true,
+    newsletter: newsCheck,
   }
 
   const dataToSend = {
@@ -120,6 +126,7 @@ const Signup = ({ navigation }) => {
   }
 
   const handleSubmit = () => {
+    console.log(formValue)
     if (fieldsValidation()) {
       setErrorMessage('')
       setLoading(true)
@@ -186,7 +193,7 @@ const Signup = ({ navigation }) => {
             </View>
 
             {/* password  */}
-            <View style={{ marginBottom: 26 }}>
+            <View style={styles.singleForm}>
               <Text style={styles.label}>Password</Text>
               <View style={styles.singleForm2}>
                 <TextInput
@@ -213,8 +220,40 @@ const Signup = ({ navigation }) => {
               <FormErrorText errorCondition={passwordError} />
             </View>
 
+            {/* agreement sections  */}
+            <View>
+              <View style={styles.singleForm}>
+                <View style={styles.checkField}>
+                  <Checkbox
+                    style={styles.checkbox}
+                    value={agreementChecked}
+                    onValueChange={setAgreementChecked}
+                    color={agreementChecked ? '#FF375F' : undefined}
+                  />
+                  <Text style={styles.agree}>
+                    I acknowledge that i have read and agree to {"\n"}
+                    <Text style={{ color: '#FF375F' }}>iGospel's Agreement</Text>
+                  </Text>
+                </View>
+              </View>
+
+              {/* newsletter checkbox */}
+              <View style={[styles.checkField, styles.secondCheckBox]}>
+                <Checkbox
+                  style={styles.checkbox}
+                  value={newsCheck}
+                  onValueChange={setNewsCheck}
+                  color={newsCheck ? '#FF375F' : undefined}
+                />
+                <Text style={styles.agree}>
+                  Sign up for the latest updates, news and more about your preferred artists.
+                  Be among the first to recieve exclusive content.
+                </Text>
+              </View>
+            </View>
+
             {/* submit button  */}
-            <Button1 onPress={handleSubmit} title="Proceed" ready={true} loading={loading} />
+            <Button1 onPress={handleSubmit} title="Proceed" ready={agreementChecked} loading={loading} />
 
             {/* login link */}
             <View>
@@ -315,5 +354,22 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     marginTop: 30
+  },
+  agree: {
+    color: 'white',
+    fontFamily: 'sf-reg',
+    fontSize: 16,
+  },
+  checkField: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  checkbox: {
+    marginTop: 8,
+    marginRight: 8,
+    marginBottom: 8
+  },
+  secondCheckBox: {
+    marginBottom: 26,
   }
 })

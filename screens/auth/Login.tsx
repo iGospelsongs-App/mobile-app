@@ -78,7 +78,7 @@ const Login = ({ navigation }) => {
             setLoading(false);
             setEmail('');
             setPassword('');
-            console.log(response.data)
+            // console.log(response.data)
             //TODO: make sure to delete the profile from the async storage when we click the logout button
             AsyncStorage.setItem('user_profile', JSON.stringify(response.data.user_info))
         } catch (error) {
