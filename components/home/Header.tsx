@@ -2,8 +2,8 @@ import { Image, StyleSheet, Text, View, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import dp from '../../assets/images/dp.png'
-import bell from '../../assets/images/bell.png'
-import settings from '../../assets/images/settings.png'
+import Bell from '../../assets/images/bell.svg'
+import Settings from '../../assets/images/settings.svg'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface ProfileProps {
@@ -70,8 +70,8 @@ const Header = () => {
     </View>
     {/* right section  */}
     <View style={styles.headerRight}>
-      <Image source={bell} />
-      <Image source={settings} style={styles.sett} />
+      <Bell width={25} height={25} />
+      <Settings width={25} height={25} style={styles.sett} />
     </View>
   </SafeAreaView>
   )

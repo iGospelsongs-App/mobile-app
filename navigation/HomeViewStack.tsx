@@ -1,21 +1,17 @@
-import { View, Text, Image, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/authenticated/Home';
 import Library from '../screens/authenticated/Library';
 import Explore from '../screens/authenticated/Explore';
-import home1 from '../assets/images/home1.png';
-import home2 from '../assets/images/home2.png';
-import search1 from '../assets/images/search1.png';
-import search2 from '../assets/images/search2.png';
-import library1 from '../assets/images/library1.png';
-import library2 from '../assets/images/library2.png';
+import Home1 from '../assets/images/home1.svg';
+import Home2 from '../assets/images/home2.svg';
+import Search1 from '../assets/images/search1.svg';
+import Search2 from '../assets/images/search2.svg';
+import Library1 from '../assets/images/library1.svg';
+import Library2 from '../assets/images/library2.svg';
 
 const Tab = createBottomTabNavigator();
-
-const LabelImage = ({image}) => {
-  return <Image source={image} style={{width: 25, height: 25}} />
-}
 
 const HomeViewStack = () => {
   return (
@@ -37,15 +33,15 @@ const HomeViewStack = () => {
     }}>
       <Tab.Screen name='home' component={Home} options={{
         headerShown: false,
-        tabBarIcon: ({focused}) => focused ? <LabelImage image={home1} /> : <LabelImage image={home2} />
+        tabBarIcon: ({focused}) => focused ? <Home1 width={25} height={25} /> : <Home2 width={25} height={25} />
       }} />
       <Tab.Screen name='explore' component={Explore} options={{
         headerShown: false,
-        tabBarIcon: ({focused}) => focused ? <LabelImage image={search1} /> : <LabelImage image={search2} />
+        tabBarIcon: ({focused}) => focused ? <Search1 width={25} height={25} /> : <Search2 width={25} height={25} />
       }} />
       <Tab.Screen name='library' component={Library} options={{
         headerShown: false,
-        tabBarIcon: ({focused}) => focused ? <LabelImage image={library1} /> : <LabelImage image={library2} />
+        tabBarIcon: ({focused}) => focused ? <Library1 width={25} height={25} /> : <Library2 width={25} height={25} />
       }} />
     </Tab.Navigator>
   )
