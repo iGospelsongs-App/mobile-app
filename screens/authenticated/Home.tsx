@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     height: 168
   },
   itemsSection: {
-    marginTop: 30
+    marginTop: 50
   },
   itemList: {
     flexDirection: 'row',

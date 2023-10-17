@@ -15,7 +15,7 @@ const VerifyCode = ({navigation, route}) => {
   const [loading, setLoading] = useState(false);
   const MAX_CODE_LENGTH = 4;
 
-  const URL = 'https://igospelsongs.onrender.com/api/check_otp/'
+  const URL = 'https://igospelsongs.onrender.com/api/verify_otp/'
   const email = route.params
 
   const formValue = {

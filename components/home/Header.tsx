@@ -59,7 +59,7 @@ const Header = () => {
         {/* <Image source={dp} style={styles.dp} /> */}
         <View style={styles.textDpWrapper}>
           <Text style={styles.textDp}>
-            {userProfile?.Username.slice(0, 1).toUpperCase()}
+            {userProfile?.Fullname.slice(0, 1).toUpperCase()}
           </Text>
         </View>
       </View>
