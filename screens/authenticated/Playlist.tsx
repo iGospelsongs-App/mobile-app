@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import img from '../../assets/images/playlist.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import Play from '../../assets/images/play-button.svg'
 
 const Playlist = () => {
   const navigation = useNavigation();
@@ -59,7 +60,9 @@ const Playlist = () => {
                             fontSize: 14
                         }}>Playlist</Text>
                     </View>
-                    <View></View>
+                    <View>
+                        <Play width={50} height={50} />
+                    </View>
                 </View>
               </View>
           </ScrollView>
