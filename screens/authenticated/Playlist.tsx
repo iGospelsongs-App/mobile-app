@@ -5,6 +5,26 @@ import img from '../../assets/images/playlist.png'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Play from '../../assets/images/play-button.svg'
+import Heart from '../../assets/images/heart.svg'
+import Menu from '../../assets/images/menu.svg'
+import Download from '../../assets/images/download.svg'
+import MusicItem from '../../components/MusicItem';
+import birth from '../../assets/images/birth.png'
+import eagles from '../../assets/images/eagles.png'
+import { MusicItemType } from '../../types';
+
+const playlist_music: MusicItemType[] = [
+    {
+        title: 'The birth of revival',
+        artist: 'Dunsin Oyekan',
+        image: birth
+    },
+    {
+        title: 'Eagles flight',
+        artist: 'Theo Sunday & 1spirit',
+        image: eagles
+    }
+]
 
 const Playlist = () => {
   const navigation = useNavigation();
@@ -43,27 +63,42 @@ const Playlist = () => {
               </ImageBackground>
 
               {/* other contents */}
-              <View style={{
-                marginTop: 20,
-                paddingHorizontal: 16,
-              }}>
-                <View>
+              <View style={styles.contents}>
+                <View style={styles.playlistInfo}>
                     <View>
-                        <Text style={{
-                            color: 'white',
-                            fontFamily: 'sf-med',
-                            fontSize: 18
-                        }}>Truth in sounds</Text>
-                        <Text style={{
-                            color: 'white',
-                            fontFamily: 'sf-med',
-                            fontSize: 14
-                        }}>Playlist</Text>
+                        <Text style={styles.playTitle}>Truth in sounds</Text>
+                        <Text style={styles.playlist}>Playlist</Text>
                     </View>
-                    <View>
+                    <TouchableOpacity activeOpacity={0.8}>
                         <Play width={50} height={50} />
-                    </View>
+                    </TouchableOpacity>
                 </View>
+
+                {/* playlist action buttons  */}
+                <View style={styles.actButtons}>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.actBtn}>
+                        <Heart width={25} height={25} />
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.actBtn}>
+                        <Download width={25} height={25} />
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8}>
+                       <Menu width={25} height={25} /> 
+                    </TouchableOpacity>
+                </View>
+
+                {/* playlist music list */}
+                <View style={{marginTop: 24}}>
+                    {/* <MusicItem /> */}
+                    {
+                        playlist_music.map((item, i) => (
+                            <MusicItem data={item} key={i} />
+                        ))
+                    }
+                </View>
+
+
+
               </View>
           </ScrollView>
       </View>
@@ -106,5 +141,33 @@ const styles = StyleSheet.create({
     },
     img: {
 
+    },
+    contents: {
+        marginTop: 20,
+        // paddingHorizontal: 16,
+    },
+    playTitle: {
+        color: 'white',
+        fontFamily: 'sf-med',
+        fontSize: 18
+    },
+    playlist: {
+        color: '#98A2B3',
+        fontFamily: 'sf-med',
+        fontSize: 14
+    },
+    playlistInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16
+    },
+    actBtn: {
+        marginRight: 16
+    },
+    actButtons: {
+        marginTop: 16,
+        flexDirection: 'row',
+        paddingHorizontal: 16
     }
 })

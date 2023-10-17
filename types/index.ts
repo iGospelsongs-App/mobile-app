@@ -22,3 +22,9 @@ export interface SignupType {
     agreement: boolean;
     newsletter: boolean;
 }
+
+export interface MusicItemType {
+    title: string;
+    artist: string;
+    image: string;
+}
