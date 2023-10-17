@@ -12,6 +12,8 @@ import MusicItem from '../../components/MusicItem';
 import birth from '../../assets/images/birth.png'
 import eagles from '../../assets/images/eagles.png'
 import { MusicItemType } from '../../types';
+import loyal from '../../assets/images/loyal.png'
+import adonai from '../../assets/images/adonai.png'
 
 const playlist_music: MusicItemType[] = [
     {
@@ -23,6 +25,16 @@ const playlist_music: MusicItemType[] = [
         title: 'Eagles flight',
         artist: 'Theo Sunday & 1spirit',
         image: eagles
+    },
+    {
+        title: 'Adonai',
+        artist: 'Nathaniel Bassey',
+        image: adonai
+    },
+    {
+        title: 'Loyal creations',
+        artist: 'Hillsong united',
+        image: loyal
     }
 ]
 
@@ -89,7 +101,6 @@ const Playlist = () => {
 
                 {/* playlist music list */}
                 <View style={{marginTop: 24}}>
-                    {/* <MusicItem /> */}
                     {
                         playlist_music.map((item, i) => (
                             <MusicItem data={item} key={i} />

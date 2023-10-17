@@ -1,7 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import birth from '../assets/images/birth.png'
-import eagles from '../assets/images/eagles.png'
 import Menu from '../assets/images/menu.svg'
 
 const MusicItem = ({data}) => {
