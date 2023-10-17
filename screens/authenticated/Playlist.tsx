@@ -9,7 +9,7 @@ const Playlist = () => {
   const navigation = useNavigation();
   const [backColor, setBackColor] = useState('transparent');
   const [topPadding, setTopPadding] = useState(50);
-  const [height, setHeight] = useState(40)
+  const [height, setHeight] = useState(30)
 
   const handleScroll = (event) => {
     const offsetY = event.nativeEvent.contentOffset.y;
@@ -19,20 +19,19 @@ const Playlist = () => {
 
     // Set the new background color based on the scroll position
     if (offsetY > scrollThreshold) {
-      setBackColor('blue');
+      setBackColor('#2c2c2c');
       setTopPadding(0);
-      setHeight(90);
+      setHeight(80);
     } else {
         setBackColor('transparent');
         setTopPadding(50)
-        setHeight(40);
+        setHeight(30);
     }
   };
 
   return (
       <View style={styles.container}>
-
-          <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} style={[styles.backWrapper, { backgroundColor: backColor, top: topPadding, height: height, paddingBottom: 5 }]}>
+          <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} style={[styles.backWrapper, { backgroundColor: backColor, top: topPadding, height: height, paddingBottom: 7 }]}>
               <Feather name="arrow-left" size={24} color="white" />
           </TouchableOpacity>
           <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
