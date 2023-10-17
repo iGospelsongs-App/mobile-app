@@ -42,11 +42,25 @@ const Playlist = () => {
               </ImageBackground>
 
               {/* other contents */}
-              <View style={{marginTop: 50}}>
-                <Image source={img} style={styles.img} />
-                <Image source={img} style={styles.img} />
-                <Image source={img} style={styles.img} />
-                <Image source={img} style={styles.img} />
+              <View style={{
+                marginTop: 20,
+                paddingHorizontal: 16,
+              }}>
+                <View>
+                    <View>
+                        <Text style={{
+                            color: 'white',
+                            fontFamily: 'sf-med',
+                            fontSize: 18
+                        }}>Truth in sounds</Text>
+                        <Text style={{
+                            color: 'white',
+                            fontFamily: 'sf-med',
+                            fontSize: 14
+                        }}>Playlist</Text>
+                    </View>
+                    <View></View>
+                </View>
               </View>
           </ScrollView>
       </View>
