@@ -1,3 +1,5 @@
+import ItemsSlideList from "../components/ItemsSlideList";
+
 export interface OnboardingDataType {
     id: number,
     image: string,
@@ -27,4 +29,14 @@ export interface MusicItemType {
     title: string;
     artist: string;
     image: string;
+}
+
+export enum cardTypeEnum {
+    ONE = 1,
+    TWO = 2,
+}
+
+export enum ItemsSlideListEnum {
+    GREEN = "#30A712",
+    RED = '#E31B54'
 }

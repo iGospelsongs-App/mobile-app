@@ -15,6 +15,8 @@ import frame6 from '../../assets/images/frame6.png'
 import CardItem from '../../components/home/CardItem'
 import TopSlider from '../../components/home/TopSlider'
 import Header from '../../components/home/Header'
+import ItemsSlideList from '../../components/ItemsSlideList'
+import { ItemsSlideListEnum, cardTypeEnum } from '../../types'
 
 interface DataProp {
   title: string,
@@ -77,29 +79,20 @@ const Home = () => {
           {/* items  */}
           <View style={styles.itemsSection}>
             {/* top songs section  */}
-            <View style={{marginBottom: 67}}>
-              <SectionHeader title="Top songs in Nigeria" color='#30A712' />
-
-                <FlatList 
-                  data={data}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({item}) => <CardItem item={item} />}
-                  horizontal
-                  bounces={false}
-                />
-            </View>
+            <ItemsSlideList 
+              data={data} 
+              cardType={cardTypeEnum.ONE} 
+              titleText="Top songs in Nigeria" 
+              color={ItemsSlideListEnum.GREEN} 
+            />
 
             {/* praise melodies section */}
-            <View>
-              <SectionHeader title="Praise melodies" color='#E31b54' />
-              <FlatList
-                data={reversedData}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <CardItem item={item} />}
-                horizontal
-                bounces={false}
-              />
-            </View>
+            <ItemsSlideList
+              data={reversedData}
+              cardType={cardTypeEnum.ONE}
+              titleText='Praise melodies'
+              color={ItemsSlideListEnum.RED}
+            />
 
           </View>
           

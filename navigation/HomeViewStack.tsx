@@ -19,15 +19,15 @@ const HomeViewStack = () => {
       tabBarActiveTintColor: '#FF375F',
       tabBarInactiveTintColor: '#E5E5EA',
       tabBarItemStyle: {
-        paddingBottom: Platform.OS === 'android' && 10,
+        paddingBottom: Platform.OS === 'android' && 8,
       },
       tabBarStyle: {
-        padding: 15,
-        height: Platform.OS === 'android' ? 80 : 100,
+        padding: 20,
+        height: Platform.OS === 'android' ? 70 : 90,
         backgroundColor: 'black'
       },
       tabBarLabelStyle: {
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: 'sf-reg'
       }
     }}>
