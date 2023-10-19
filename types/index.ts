@@ -1,5 +1,3 @@
-import ItemsSlideList from "../components/ItemsSlideList";
-
 export interface OnboardingDataType {
     id: number,
     image: string,

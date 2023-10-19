@@ -11,9 +11,13 @@ import Download from '../../assets/images/download.svg'
 import MusicItem from '../../components/MusicItem';
 import birth from '../../assets/images/birth.png'
 import eagles from '../../assets/images/eagles.png'
-import { MusicItemType } from '../../types';
+import { ItemsSlideListEnum, MusicItemType, cardTypeEnum } from '../../types';
 import loyal from '../../assets/images/loyal.png'
 import adonai from '../../assets/images/adonai.png'
+import spec1 from '../../assets/images/spec1.png'
+import spec2 from '../../assets/images/spec2.png'
+import spec3 from '../../assets/images/spec3.png'
+import ItemsSlideList from '../../components/ItemsSlideList';
 
 const playlist_music: MusicItemType[] = [
     {
@@ -36,6 +40,24 @@ const playlist_music: MusicItemType[] = [
         artist: 'Hillsong united',
         image: loyal
     }
+]
+
+const data = [
+    {
+        title: '',
+        image: spec1,
+        id: 1
+    },
+    {
+        title: '',
+        image: spec2,
+        id: 2
+    },
+    {
+        title: '',
+        image: spec3,
+        id: 3
+    },
 ]
 
 const Playlist = () => {
@@ -64,7 +86,12 @@ const Playlist = () => {
 
   return (
       <View style={styles.container}>
-          <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} style={[styles.backWrapper, { backgroundColor: backColor, top: topPadding, height: height, paddingBottom: 7 }]}>
+          <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} style={[styles.backWrapper, { 
+            backgroundColor: backColor, 
+            top: topPadding, 
+            height: height, 
+            paddingBottom: 7 
+          }]}>
               <Feather name="arrow-left" size={24} color="white" />
           </TouchableOpacity>
           <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
@@ -107,9 +134,14 @@ const Playlist = () => {
                         ))
                     }
                 </View>
-
-
-
+                <View style={styles.forYou}>
+                    <ItemsSlideList
+                        data={data}
+                        cardType={cardTypeEnum.TWO}
+                        titleText='For you'
+                        color={ItemsSlideListEnum.RED}
+                    />
+                </View>
               </View>
           </ScrollView>
       </View>
@@ -138,24 +170,18 @@ const styles = StyleSheet.create({
     },
     backWrapper: {
         width: '100%',
-        // height: 40,
         position: 'absolute',
-        // top: 48,
         zIndex: 2,
         paddingLeft: 16,
         justifyContent: 'flex-end',
-        // paddingBottom: 10
     },
     imgWrapper: {
         alignItems: 'center',
         marginTop: 16
     },
-    img: {
-
-    },
+    img: {},
     contents: {
         marginTop: 20,
-        // paddingHorizontal: 16,
     },
     playTitle: {
         color: 'white',
@@ -180,5 +206,6 @@ const styles = StyleSheet.create({
         marginTop: 16,
         flexDirection: 'row',
         paddingHorizontal: 16
-    }
+    },
+    forYou: {marginTop: 39, marginHorizontal: 16}
 })
