@@ -3,6 +3,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeViewStack from './HomeViewStack';
 import Playlist from '../screens/authenticated/Playlist';
+import PlayScreen from '../screens/authenticated/PlayScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const AuthenticatedStack = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name='home-view' component={HomeViewStack} />
       <Stack.Screen name='playlist' component={Playlist} />
+      <Stack.Screen name='play-screen' component={PlayScreen} />
     </Stack.Navigator>
   )
 }

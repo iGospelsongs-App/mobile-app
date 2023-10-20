@@ -74,7 +74,7 @@ const Playlist = () => {
 
     // Set the new background color based on the scroll position
     if (offsetY > scrollThreshold) {
-      setBackColor('#2c2c2c');
+      setBackColor('#1D2939');
       setTopPadding(0);
       setHeight(80);
     } else {

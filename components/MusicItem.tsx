@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Menu from '../assets/images/menu.svg'
+import { useNavigation } from '@react-navigation/native'
 
 const MusicItem = ({data}) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <View>
+    <TouchableOpacity onPress={() => navigation.navigate('play-screen')}>
+      <>
       <View style={styles.container} >
         <View style={styles.leftWrapper}>
           <Image source={data.image} style={styles.img} />
@@ -19,7 +23,8 @@ const MusicItem = ({data}) => {
       </TouchableOpacity>
       </View>
       <View style={styles.line}></View>
-    </View>
+      </>
+    </TouchableOpacity>
   )
 }
 
