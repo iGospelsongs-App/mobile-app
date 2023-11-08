@@ -88,21 +88,11 @@ const PlayScreen = () => {
             </View>
 
             {/* song play controls */}
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 50,
-                justifyContent: 'center',
-                marginTop: 46
-            }}>
+            <View style={styles.controls}>
                 <TouchableOpacity activeOpacity={0.8}>
                     <ShuffleImg />
                 </TouchableOpacity>
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 60
-                }}>
+                <View style={styles.middleControls}>
                     <TouchableOpacity activeOpacity={0.8}><SkipBackward /></TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.7}><PlayImg /></TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.8}><SkipForward /></TouchableOpacity>
@@ -110,6 +100,11 @@ const PlayScreen = () => {
                 <View>
                     <TouchableOpacity activeOpacity={0.8}><RepeatImg /></TouchableOpacity>
                 </View>
+            </View>
+
+            {/* extra control options  */}
+            <View>
+
             </View>
         </ImageBackground>
     )
@@ -179,4 +174,18 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 700,
     },
+    controls: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 50,
+        justifyContent: 'center',
+        marginTop: 46,
+        marginBottom: 85,
+    },
+    middleControls: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 60
+    }
+
 })
