@@ -1,4 +1,4 @@
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ImageBackground, Share, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import img from '../../assets/images/playlist.png'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -13,6 +13,8 @@ import PlayImg from '../../assets/images/play.svg';
 import SkipForward from '../../assets/images/skipforward.svg';
 import SkipBackward from '../../assets/images/skipback.svg';
 import RepeatImg from '../../assets/images/repeat.svg'
+import SpeakerImg from '../../assets/images/speaker.svg'
+import ShareImg from '../../assets/images/share.svg'
 
 const PlayScreen = () => {
     const navigation = useNavigation();
@@ -103,8 +105,18 @@ const PlayScreen = () => {
             </View>
 
             {/* extra control options  */}
-            <View>
-
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingHorizontal: 16
+            }}>
+                <TouchableOpacity activeOpacity={0.8}>
+                    <SpeakerImg />
+                </TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.8}>
+                    <ShareImg />
+                </TouchableOpacity>
             </View>
         </ImageBackground>
     )
