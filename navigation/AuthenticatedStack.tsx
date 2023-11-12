@@ -15,9 +15,9 @@ const LabelImage = ({image}) => {
 const AuthenticatedStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {/* <Stack.Screen name='home-view' component={HomeViewStack} />
+      <Stack.Screen name='home-view' component={HomeViewStack} />
       <Stack.Screen name='playlist' component={Playlist} />
-      <Stack.Screen name='play-screen' component={PlayScreen} /> */}
+      <Stack.Screen name='play-screen' component={PlayScreen} />
       <Stack.Screen name='artist-screen' component={ArtistScreen} />
     </Stack.Navigator>
   )
