@@ -105,12 +105,7 @@ const PlayScreen = () => {
             </View>
 
             {/* extra control options  */}
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingHorizontal: 16
-            }}>
+            <View style={styles.playOpt}>
                 <TouchableOpacity activeOpacity={0.8}>
                     <SpeakerImg />
                 </TouchableOpacity>
@@ -189,15 +184,21 @@ const styles = StyleSheet.create({
     controls: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 50,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginTop: 46,
         marginBottom: 85,
+        paddingHorizontal: 16
     },
     middleControls: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 60
+        gap: 50,
+    },
+    playOpt: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
     }
 
 })
