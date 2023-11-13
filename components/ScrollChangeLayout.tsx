@@ -37,7 +37,7 @@ const ScrollChangeLayout = ({children}) => {
           }]}>
               <Feather name="arrow-left" size={24} color="white" />
           </TouchableOpacity>
-          <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
+          <ScrollView onScroll={handleScroll} showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
             {children}
           </ScrollView>
         </View>
