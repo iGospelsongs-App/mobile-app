@@ -18,28 +18,10 @@ const ArtistScreen = () => {
             <View style={styles.contents}>
                 {/* left side */}
                 <View style={styles.leftSide}>
-                    <Text style={{
-                        color: '#98A2B3',
-                        fontFamily: 'sf-med',
-                        fontSize: 12,
-                    }}>52.3M monthly listeners</Text>
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 18
-                    }}>
-                        <View style={{
-                            borderWidth: 1,
-                            borderColor: 'white',
-                            borderRadius: 5
-                        }}>
-                            <Text style={{
-                                color: 'white',
-                                fontSize: 14,
-                                fontFamily: 'sf-med',
-                                paddingHorizontal: 14,
-                                paddingVertical: 8,
-                            }}>Follow</Text>
+                    <Text style={styles.listeners}>52.3M monthly listeners</Text>
+                    <View style={styles.btnsWrapper}>
+                        <View style={styles.followWrapper}>
+                            <Text style={styles.followText}>Follow</Text>
                         </View>
                         <TouchableOpacity activeOpacity={0.7}>
                             <ShuffleIcon />
@@ -83,5 +65,26 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         gap: 16
     },
-    
+    listeners:{
+        color: '#98A2B3',
+        fontFamily: 'sf-med',
+        fontSize: 12,
+    },
+    btnsWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 18
+    },
+    followWrapper: {
+        borderWidth: 1,
+        borderColor: 'white',
+        borderRadius: 5
+    },
+    followText: {
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'sf-med',
+        paddingHorizontal: 14,
+        paddingVertical: 8,
+    }
 }) 
