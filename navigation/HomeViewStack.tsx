@@ -24,7 +24,8 @@ const HomeViewStack = () => {
       tabBarStyle: {
         padding: 20,
         height: Platform.OS === 'android' ? 70 : 90,
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+        borderTopWidth: 0
       },
       tabBarLabelStyle: {
         fontSize: 12,
