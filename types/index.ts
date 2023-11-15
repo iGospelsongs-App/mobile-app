@@ -1,3 +1,6 @@
+import { FC } from "react";
+import { SvgProps } from "react-native-svg";
+
 export interface OnboardingDataType {
     id: number,
     image: string,
@@ -37,4 +40,10 @@ export enum cardTypeEnum {
 export enum ItemsSlideListEnum {
     GREEN = "#30A712",
     RED = '#E31B54'
+}
+
+export interface NotificationDataType {
+    info: string;
+    date: string;
+    image: string;
 }

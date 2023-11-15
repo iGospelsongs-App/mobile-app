@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Notif1 from '../../assets/images/notif1.svg'
 
-const NotificationItem = () => {
+const NotificationItem = ({info, date, image}) => {
     return (
         <View style={styles.content}>
             <View>
-                <Notif1 />
+                <Image source={image} />
             </View>
             <View>
-                <Text style={styles.notifInfo}>Trending Adonai is number 1 in Nigeria</Text>
-                <Text style={styles.notifTime}>Some days ago</Text>
+                <Text style={styles.notifInfo}>{info}</Text>
+                <Text style={styles.notifTime}>{date}</Text>
             </View>
         </View>
     )
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     content: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 12
+        gap: 12,
+        marginBottom: 26
       },
       notifInfo: {
         fontSize: 15,
