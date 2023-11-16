@@ -60,6 +60,5 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: 'rgba(255, 255, 255, 0.21)',
         height: 1,
-        // marginTop: 16
       }
 })

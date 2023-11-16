@@ -39,7 +39,8 @@ export enum cardTypeEnum {
 
 export enum ItemsSlideListEnum {
     GREEN = "#30A712",
-    RED = '#E31B54'
+    RED = '#E31B54',
+    BLUE = '#175CD3'
 }
 
 export interface NotificationDataType {

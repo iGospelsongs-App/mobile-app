@@ -23,7 +23,7 @@ const CardItem = ({item, cardType}) => {
 const ItemsSlideList = ({data, cardType, titleText, color}) => {
     return (
         <View style={{ marginBottom: 67 }}>
-            <SectionHeader title={titleText} color={color === ItemsSlideListEnum.GREEN ? ItemsSlideListEnum.GREEN : ItemsSlideListEnum.RED} />
+            <SectionHeader title={titleText} color={color} />
 
             <FlatList
                 data={data}

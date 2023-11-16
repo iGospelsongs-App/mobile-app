@@ -3,7 +3,10 @@ import React from 'react'
 
 const SectionHeader = ({color, title}) => {
   return (
-    <View style={[styles.wrapper, {borderLeftColor: color}]}>
+    <View style={[styles.wrapper, {
+      borderLeftColor: color,
+      borderLeftWidth: color ? 5 : 0,
+    }]}>
       <View>
         <Text style={styles.txt}>{title}</Text>
       </View>
@@ -22,7 +25,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         borderLeftColor: 'green',
-        borderLeftWidth: 5,
         marginBottom: 18
     },
     txt: {
