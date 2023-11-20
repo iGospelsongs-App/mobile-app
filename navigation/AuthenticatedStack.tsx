@@ -9,10 +9,6 @@ import NotificationScreen from '../screens/authenticated/NotificationScreen';
 
 const Stack = createNativeStackNavigator();
 
-const LabelImage = ({image}) => {
-  return <Image source={image} style={{width: 25, height: 25}} />
-}
-
 const AuthenticatedStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>

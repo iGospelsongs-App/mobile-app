@@ -35,6 +35,7 @@ export interface MusicItemType {
 export enum cardTypeEnum {
     ONE = 1,
     TWO = 2,
+    THREE = 3
 }
 
 export enum ItemsSlideListEnum {

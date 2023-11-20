@@ -20,7 +20,9 @@ import birth from '../../assets/images/birth.png'
 import eagles from '../../assets/images/eagles.png'
 import { ItemsSlideListEnum, MusicItemType, cardTypeEnum } from '../../types';
 import loyal from '../../assets/images/loyal.png'
-import adonai from '../../assets/images/adonai.png'
+import adonai from '../../assets/images/adonai.png';
+import sermon1 from '../../assets/images/sermon1.png';
+import SermonItem from '../../components/SermonItem';
 
 const MoodsData = [
   {
@@ -77,6 +79,27 @@ const data: DataProp[] = [
     image: frame6,
     id: '6'
   },
+]
+
+const sermonData = [
+  {
+    title: 'Kononia Global',
+    preacher: 'Sermon Apts Joshua Selman',
+    image: sermon1,
+    id: 1
+  },
+  {
+    title: 'Kononia Global',
+    preacher: 'Sermon Aptl Joshua Selman',
+    image: sermon1,
+    id: 2
+  },
+  {
+    title: 'Kononia Global',
+    preacher: 'Sermon Apt Joshua Selman',
+    image: sermon1,
+    id: 3
+  }
 ]
 
 const playlist_music: MusicItemType[] = [
@@ -178,8 +201,14 @@ const Explore = () => {
           </View>
 
           {/* sermons section  */}
-          <View>
-            <SectionHeader title='Sermons' color={ItemsSlideListEnum.BLUE} />
+          <View style={styles.sermonContainer}>
+          <ItemsSlideList
+              data={sermonData}
+              cardType={cardTypeEnum.THREE}
+              titleText='Sermons'
+              color={ItemsSlideListEnum.BLUE}
+            />
+
           </View>
           
         </ScrollView>
@@ -274,6 +303,10 @@ const styles = StyleSheet.create({
     
   },
   searchSection: {
+    paddingHorizontal: 16
+  },
+  sermonContainer: {
+    marginBottom: 20,
     paddingHorizontal: 16
   }
 })
