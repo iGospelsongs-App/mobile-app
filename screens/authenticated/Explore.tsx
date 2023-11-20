@@ -233,6 +233,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sf-med',
     fontSize: 24,
     marginBottom: 24,
+    paddingHorizontal: 16
   },
   searchBar: {
     width: '100%',
