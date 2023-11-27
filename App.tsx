@@ -57,7 +57,6 @@ const Root = () => {
 }
 
 export default function App() {
-  const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
 
   const [fontsLoaded] = useFonts({
     'sf-bold': require('./assets/fonts/sf-pro/sf-bold.otf'),
@@ -77,7 +76,6 @@ export default function App() {
       </RootSiblingParent>
     </AuthContextProvider>
   );
-
 
 }
 

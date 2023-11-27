@@ -9,6 +9,16 @@ export interface OnboardingDataType {
     indicator: boolean
 }
 
+export interface MoodDataType {
+    title: string;
+    colors: string[];
+}
+export interface DataProp {
+    title: string,
+    image: any,
+    id: string
+  }
+
 export interface OnboardingSlideType {
     data: OnboardingDataType[],
     item: OnboardingDataType,

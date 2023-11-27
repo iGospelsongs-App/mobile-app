@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Feather } from '@expo/vector-icons';
@@ -9,123 +9,17 @@ import Cat3 from '../../assets/images/cat3.svg';
 import SectionHeader from '../../components/SectionHeader';
 import ColorCards from '../../components/ColorCards';
 import ItemsSlideList from '../../components/ItemsSlideList';
-import frame1 from '../../assets/images/frame1.png'
-import frame2 from '../../assets/images/frame2.png'
-import frame3 from '../../assets/images/frame3.png'
-import frame4 from '../../assets/images/frame4.png'
-import frame5 from '../../assets/images/frame5.png'
-import frame6 from '../../assets/images/frame6.png'
 import MusicItem from '../../components/MusicItem';
-import birth from '../../assets/images/birth.png'
-import eagles from '../../assets/images/eagles.png'
-import { ItemsSlideListEnum, MusicItemType, cardTypeEnum } from '../../types';
-import loyal from '../../assets/images/loyal.png'
-import adonai from '../../assets/images/adonai.png';
-import sermon1 from '../../assets/images/sermon1.png';
-import SermonItem from '../../components/SermonItem';
-
-const MoodsData = [
-  {
-    title: 'Soul lifting',
-    colors: ['#B00C0D', '#9747FF'] 
-  },
-  {
-    title: 'Thanksgiving',
-    colors: ['#540CB0', '#9747FF'] 
-  },
-  {
-    title: 'Praise',
-    colors: ['#E28A05', '#FFD747'] 
-  },
-  {
-    title: 'Chants',
-    colors: ['#FF7347', '#8A0800'] 
-  },
-]
-interface DataProp {
-  title: string,
-  image: any,
-  id: string
-}
-
-const data: DataProp[] = [
-  {
-    title: 'Journey to the deep',
-    image: frame1,
-    id: '1'
-  },
-  {
-    title: 'Walk by faith',
-    image: frame2,
-    id: '2'
-  },
-  {
-    title: 'The birth of revival',
-    image: frame4,
-    id: '3'
-  },
-  {
-    title: 'Hallelujah',
-    image: frame3,
-    id: '4'
-  },
-  {
-    title: 'Tongues of fire',
-    image: frame5,
-    id: '5'
-  },
-  {
-    title: 'Miracle no dey tire Jesus',
-    image: frame6,
-    id: '6'
-  },
-]
-
-const sermonData = [
-  {
-    title: 'Kononia Global',
-    preacher: 'Sermon Apts Joshua Selman',
-    image: sermon1,
-    id: 1
-  },
-  {
-    title: 'Kononia Global',
-    preacher: 'Sermon Aptl Joshua Selman',
-    image: sermon1,
-    id: 2
-  },
-  {
-    title: 'Kononia Global',
-    preacher: 'Sermon Apt Joshua Selman',
-    image: sermon1,
-    id: 3
-  }
-]
-
-const playlist_music: MusicItemType[] = [
-  {
-      title: 'The birth of revival',
-      artist: 'Dunsin Oyekan',
-      image: birth
-  },
-  {
-      title: 'Eagles flight',
-      artist: 'Theo Sunday & 1spirit',
-      image: eagles
-  },
-  {
-      title: 'Adonai',
-      artist: 'Nathaniel Bassey',
-      image: adonai
-  },
-  {
-      title: 'Loyal creations',
-      artist: 'Hillsong united',
-      image: loyal
-  }
-]
+import { EXPLORE_DATA, MOODS_DATA, PLAYLIST_MUSIC, SERMON_DATA } from '../../data/explore';
+import { ItemsSlideListEnum, cardTypeEnum } from '../../types';
 
 const Explore = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchTerm = (text: React.SetStateAction<string>) => {
+    setSearchTerm(text);
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -139,7 +33,7 @@ const Explore = () => {
         <View style={styles.searchSection}>
           <View style={styles.searchBar}>
             <Feather name="search" size={24} color="white" />
-            <TextInput placeholder='Search' placeholderTextColor='white' style={styles.input} />
+            <TextInput value={searchTerm} onChangeText={handleSearchTerm} placeholder='Search' placeholderTextColor='white' style={styles.input} />
           </View>
         </View>
         
@@ -166,7 +60,7 @@ const Explore = () => {
             <SectionHeader title='Mood and genres' color={''} />
             <View style={styles.moodStack}>
               {
-                MoodsData.map((item, i) => (
+                MOODS_DATA.map((item, i) => (
                   <ColorCards key={i} colors={item.colors} title={item.title} />
                 ))
               }
@@ -176,7 +70,7 @@ const Explore = () => {
           {/* top songs section  */}
           <View style={styles.soulCategory}>
             <ItemsSlideList
-              data={data}
+              data={EXPLORE_DATA}
               cardType={cardTypeEnum.ONE}
               titleText="Soul lifting songs"
               color={ItemsSlideListEnum.BLUE}
@@ -193,7 +87,7 @@ const Explore = () => {
             
             <View>
               {
-                playlist_music.map((item, i) => (
+                PLAYLIST_MUSIC.map((item, i) => (
                   <MusicItem data={item} key={i} />
                 ))
               }
@@ -203,7 +97,7 @@ const Explore = () => {
           {/* sermons section  */}
           <View style={styles.sermonContainer}>
           <ItemsSlideList
-              data={sermonData}
+              data={SERMON_DATA}
               cardType={cardTypeEnum.THREE}
               titleText='Sermons'
               color={ItemsSlideListEnum.BLUE}
