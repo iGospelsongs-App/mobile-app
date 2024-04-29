@@ -9,6 +9,7 @@ import axios from 'axios'
 import { StatusBar } from 'expo-status-bar';
 import Checkbox from 'expo-checkbox';
 import { SignupType } from '../../types';
+import { SIGNUP_URL } from '../../data/endpoints';
 
 const Signup = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +28,6 @@ const Signup = ({ navigation }) => {
 
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const URL = 'https://igospelsongs.onrender.com/api/signup/'
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -111,7 +111,7 @@ const Signup = ({ navigation }) => {
 
   const handlePostRequest = async () => {
     try {
-      const response = await axios.post(URL, formValue)
+      const response = await axios.post(SIGNUP_URL, formValue)
       setLoading(false)
       setUsername('')
       setFullname('')

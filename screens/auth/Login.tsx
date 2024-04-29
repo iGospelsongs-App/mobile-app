@@ -9,6 +9,7 @@ import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LOGIN_URL } from '../../data/endpoints';
 
 const Login = ({ navigation }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,6 @@ const Login = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const URL = 'https://igospelsongs.onrender.com/api/signin/';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const authCtx = useContext(AuthContext);
 
@@ -31,21 +31,21 @@ const Login = ({ navigation }) => {
         let isEmailValid = true;
         let isPasswordValid = true;
 
-        if(email.trim() === '') {
+        if (email.trim() === '') {
             setEmailError('Email is required')
             isEmailValid = false;
-        } else if(!emailPattern.test(email)) {
+        } else if (!emailPattern.test(email)) {
             setEmailError('Invalid Email')
             isEmailValid = false;
         } else {
             setEmailError('')
         }
 
-        if(password.trim() === '') {
+        if (password.trim() === '') {
             setPasswordError('Password is required')
             isPasswordValid = false;
-        } else if(password.length < 6) {
-            setPasswordError('Password must be more than 6 char')
+        } else if (password.length < 6) {
+            setPasswordError('Password must be more than 6 char');
             isPasswordValid = false;
         } else {
             setPasswordError('')
@@ -73,7 +73,7 @@ const Login = ({ navigation }) => {
 
     const handlePostRequest = async () => {
         try {
-            const response = await axios.post(URL, formValues);
+            const response = await axios.post(LOGIN_URL, formValues);
             authCtx.authenticate(response.data.token)
             setLoading(false);
             setEmail('');
@@ -89,7 +89,7 @@ const Login = ({ navigation }) => {
     }
 
     const handleSubmit = () => {
-        if(fieldsValidation()) {
+        if (fieldsValidation()) {
             setErrorMessage('')
             setLoading(true)
             handlePostRequest()
@@ -122,7 +122,7 @@ const Login = ({ navigation }) => {
                     </View>
 
                     {/* password  */}
-                    <View style={{marginBottom: 26}}>
+                    <View style={{ marginBottom: 26 }}>
                         <Text style={styles.label}>Password</Text>
                         <View style={styles.singleForm2}>
                             <TextInput
@@ -157,7 +157,7 @@ const Login = ({ navigation }) => {
                     <Button1 onPress={handleSubmit} title='Continue' ready={true} loading={loading} />
                     <View>
                         <Text style={styles.loginLink}>Don't have an account?
-                            <Text style={{color: '#FF375F'}} onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
+                            <Text style={{ color: '#FF375F' }} onPress={() => navigation.navigate('sign-up')}> Sign up</Text>
                         </Text>
                     </View>
                 </View>
