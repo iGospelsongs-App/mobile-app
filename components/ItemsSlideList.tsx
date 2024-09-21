@@ -9,11 +9,14 @@ const CardItem = ({item, cardType}) => {
     const navigation = useNavigation<any>();
       return (
           <TouchableOpacity onPress={() => navigation.navigate('playlist')} activeOpacity={0.8} style={[styles.cardCover, {
-            width: cardType === cardTypeEnum.ONE ? 137 : 158,
+            // width: cardType === cardTypeEnum.ONE ? 137 : 158,
+            width: cardType === cardTypeEnum.ONE ? 137 : cardType === cardTypeEnum.TWO ? 158 : cardType === cardTypeEnum.THREE ? 234 : 0,
           }]}>
               <Image source={item.image} style={{
-                width: cardType === cardTypeEnum.ONE ? 137 : 158,
-                height: cardType === cardTypeEnum.ONE ? 137 : 158
+                // width: cardType === cardTypeEnum.ONE ? 137 : 158,
+                width: cardType === cardTypeEnum.ONE ? 137 : cardType === cardTypeEnum.TWO ? 158 : cardType === cardTypeEnum.THREE ? 234 : 0,
+                // height: cardType === cardTypeEnum.ONE ? 137 : 158
+                height: cardType === cardTypeEnum.ONE ? 137 : cardType === cardTypeEnum.TWO ? 158 : cardType === cardTypeEnum.THREE ? 151 : 0,
               }} />
               <Text style={styles.cardDesc}>{item.title}</Text>
           </TouchableOpacity>
@@ -23,7 +26,7 @@ const CardItem = ({item, cardType}) => {
 const ItemsSlideList = ({data, cardType, titleText, color}) => {
     return (
         <View style={{ marginBottom: 67 }}>
-            <SectionHeader title={titleText} color={color === ItemsSlideListEnum.GREEN ? ItemsSlideListEnum.GREEN : ItemsSlideListEnum.RED} />
+            <SectionHeader title={titleText} color={color} />
 
             <FlatList
                 data={data}

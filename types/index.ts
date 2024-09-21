@@ -9,6 +9,16 @@ export interface OnboardingDataType {
     indicator: boolean
 }
 
+export interface MoodDataType {
+    title: string;
+    colors: string[];
+}
+export interface DataProp {
+    title: string,
+    image: any,
+    id: string
+  }
+
 export interface OnboardingSlideType {
     data: OnboardingDataType[],
     item: OnboardingDataType,
@@ -35,11 +45,13 @@ export interface MusicItemType {
 export enum cardTypeEnum {
     ONE = 1,
     TWO = 2,
+    THREE = 3
 }
 
 export enum ItemsSlideListEnum {
     GREEN = "#30A712",
-    RED = '#E31B54'
+    RED = '#E31B54',
+    BLUE = '#175CD3'
 }
 
 export interface NotificationDataType {
