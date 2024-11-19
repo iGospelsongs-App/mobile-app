@@ -63,13 +63,13 @@ const Header = () => {
           {/* <Image source={dp} style={styles.dp} /> */}
           <View style={styles.textDpWrapper}>
             <Text style={styles.textDp}>
-              {userProfile?.full_name.charAt(0).toUpperCase()}
+              {userProfile ? userProfile?.full_name.charAt(0).toUpperCase() : "+"}
             </Text>
           </View>
         </View>
         <View style={styles.nameCont}>
           <Text style={styles.greet}>{greeting}</Text>
-          <Text style={styles.name}>{userProfile?.username}</Text>
+          <Text style={styles.name}>{userProfile ? userProfile?.username : "Child of GOD"}</Text>
         </View>
       </View>
       {/* right section  */}

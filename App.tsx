@@ -23,7 +23,8 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      {authCtx.token ? <AuthenticatedStack /> : <AuthStack />}
+      {/*{authCtx.token ? <AuthenticatedStack /> : <AuthStack />}*/}
+      <AuthenticatedStack />
     </NavigationContainer>
   );
 };
