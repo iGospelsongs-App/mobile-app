@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { StatusBar } from 'expo-status-bar'
 import frame1 from '../../assets/images/frame1.png'
 import frame2 from '../../assets/images/frame2.png'
@@ -11,6 +11,10 @@ import TopSlider from '../../components/home/TopSlider'
 import Header from '../../components/home/Header'
 import ItemsSlideList from '../../components/ItemsSlideList'
 import { ItemsSlideListEnum, cardTypeEnum } from '../../types'
+import SectionHeader from "../../components/SectionHeader";
+import {PLAYLIST_MUSIC} from "../../data/explore";
+import MusicItem from "../../components/MusicItem";
+import * as MediaLibrary from 'expo-media-library';
 
 interface DataProp {
   title: string,
@@ -54,6 +58,31 @@ const data: DataProp[] = [
 const reversedData = [...data].reverse()
 
 const Home = () => {
+  const [songs, setSongs] = useState<MediaLibrary.Asset[]>([]);
+  const [permissionGranted, setPermissionGranted] = useState(false);
+
+  useEffect(() => {
+    const getPermissions = async () => {
+      const { status } = await MediaLibrary.requestPermissionsAsync();
+      if (status === 'granted') {
+        setPermissionGranted(true);
+        fetchSongs();
+      } else {
+        alert('Permission to access media library is required!');
+      }
+    };
+
+    const fetchSongs = async () => {
+      const media = await MediaLibrary.getAssetsAsync({
+        mediaType: MediaLibrary.MediaType.audio, // Fetch audio files only
+        first: 50, // Number of items to fetch (adjust as needed)
+      });
+      setSongs(media.assets);
+      console.log('ALL SONGS ARE', media.assets);
+    };
+
+    getPermissions();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -72,6 +101,20 @@ const Home = () => {
 
           {/* items  */}
           <View style={styles.itemsSection}>
+            <View style={styles.trendingWrapper}>
+              <View style={styles.searchSection}>
+                <SectionHeader title='Local Music' color={ItemsSlideListEnum.RED} />
+              </View>
+
+              <View>
+                {
+                  PLAYLIST_MUSIC.map((item, i) => (
+                      <MusicItem data={item} key={i} />
+                  ))
+                }
+              </View>
+            </View>
+
             {/* top songs section  */}
             <ItemsSlideList 
               data={data} 
@@ -125,8 +168,13 @@ const styles = StyleSheet.create({
   },
   itemList: {
     flexDirection: 'row',
-  }
-
+  },
+  trendingWrapper: {
+    marginBottom: 50,
+  },
+  searchSection: {
+    paddingHorizontal: 16
+  },
 
 
 })
